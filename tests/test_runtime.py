@@ -17,7 +17,11 @@ ROOT = Path(__file__).resolve().parents[1]
 def _copy_workspace() -> tuple[tempfile.TemporaryDirectory[str], Workspace]:
     holder = tempfile.TemporaryDirectory(prefix="cvc-test-")
     destination = Path(holder.name) / "workspace"
-    shutil.copytree(ROOT, destination)
+    shutil.copytree(
+        ROOT,
+        destination,
+        ignore=shutil.ignore_patterns(".pytest_cache", "__pycache__", ".git"),
+    )
     return holder, Workspace(destination)
 
 
