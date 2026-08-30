@@ -1,0 +1,128 @@
+{
+  "schema_version": "cvc-diagnostic-e4-review.v0.1",
+  "acquisition_id": "CVC-DIAG-AQ-001",
+  "review_date": "2026-08-30",
+  "scope": ["STD-EPI-003", "STD-CLS-001", "STD-DIA-001"],
+  "decision_type": "E4_REEVALUATION_AFTER_TARGETED_ACQUISITION",
+  "support_grade_changes_applied": false,
+  "ratification_created": false,
+  "frozen_contract": {
+    "version": "cvc-e4-ratification-contract.v0.1",
+    "path": "standards/E4_RATIFICATION_CONTRACT_V0.1.json",
+    "sha256": "52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59"
+  },
+  "frozen_wishlist_source": {
+    "path": "standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.jsonl",
+    "sha256": "DB08540B54ACFDE18B7DD79E7593CDD7AD57756481BEEFAA14EFD1494A57C1BA",
+    "records_used": ["STD-EPI-003", "STD-CLS-001", "STD-DIA-001"]
+  },
+  "frozen_pass_1_source": {
+    "path": "standards/E4_REVIEW_PASS_1.jsonl",
+    "sha256": "4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0"
+  },
+  "acquisition_register": {
+    "path": "standards/DIAGNOSTIC_EVIDENCE_ACQUISITION_001.jsonl",
+    "record_count": 8,
+    "role_counts": {"PRIMARY": 4, "DERIVED": 2, "EXECUTABLE_CONFORMANCE": 1, "MISSING_EXPECTED_EVIDENCE": 1}
+  },
+  "corpus_boundary": {
+    "complete_raw_diagnostic_ledger_available": false,
+    "owner_supplied_live_ledger_available": false,
+    "missing_expected_evidence_record": "DIA-AQ1-CORPUS-BOUNDARY",
+    "motherclank_evidence_acquired": false,
+    "inference_from_missing_rows": false,
+    "boundary_statement": "Only the available normalized DiagnosticBench/report corpus and recorded provenance were used; missing incidents, lessons, timestamps, confidence, unresolved questions, and supersession states were not inferred."
+  },
+  "evidence_summary": {
+    "primary": ["DIA-AQ1-DB-001", "DIA-AQ1-DB-004", "DIA-AQ1-DB-009", "DIA-AQ1-REPORT-CORPUS"],
+    "derived": ["DIA-AQ1-SEED-INDEX", "DIA-AQ1-TRACEABILITY"],
+    "executable_conformance": ["DIA-AQ1-LEARNING-LOOP-001"],
+    "missing_expected_evidence": ["DIA-AQ1-CORPUS-BOUNDARY"],
+    "new_independent_primary_corpus_claimed": false
+  },
+  "rule_reviews": [
+    {
+      "rule_id": "STD-EPI-003",
+      "current_support_grade": "E3",
+      "frozen_blocking_dimension": "survivability/profile_stability",
+      "frozen_minimum_sufficient_proof": "One end-to-end run bundle with stage IDs, terminal or pending reason, restart/observer boundaries, and an explicit accounting reconciliation showing no silent drops.",
+      "new_evidence_ids": ["DIA-AQ1-DB-001", "DIA-AQ1-DB-004", "DIA-AQ1-DB-009", "DIA-AQ1-CORPUS-BOUNDARY"],
+      "dimension_results": {
+        "breadth": {"status": "PASS", "basis": "Carried forward from Pass 1: seven supporting systems and four conservatively counted implementations."},
+        "independence": {"status": "PASS", "basis": "Carried forward from Pass 1: direct incidents and Clank behavior are counted conservatively; summaries are excluded."},
+        "failure_success_support": {"status": "PASS", "basis": "Carried forward from Pass 1 with failure records DIA-DB-001, DIA-DB-009, MC-INC-20260822-SCHED-GAP and success records MC-LIVE-CLOSEOUT, OEM-PHASE10-DELIVERY, KTW-DUE-GATING."},
+        "observability": {"status": "PASS", "basis": "DIA-AQ1-DB-001 and DIA-AQ1-DB-009 add explicit blocked/zero dispositions; DIA-AQ1-DB-004 preserves scheduler/materialization separation."},
+        "survivability": {"status": "PARTIAL", "basis": "No durable end-to-end per-unit ledger across all named stages was found; the raw Diagnostic ledger remains unavailable."},
+        "reproducibility": {"status": "PARTIAL", "basis": "Cited normalized records resolve, but the minimum proof requires a preserved run bundle whose raw Diagnostic artifact is unavailable."},
+        "profile_stability": {"status": "PARTIAL", "basis": "The state boundary travels, but exact terminal vocabularies and a complete cross-profile corpus remain open."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The missing raw Diagnostic ledger is material to proving no silent stage loss; no Motherclank evidence was acquired in this pass."}
+      },
+      "finding": "Explicit blocked/zero and scheduler/materialization failure semantics are present, but complete terminal accounting and no-silent-drop success proof are absent.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "One independently implemented collector with durable per-unit terminal classification and a preserved production run demonstrating no silent candidate loss across scheduler, process, fetch, parse, persist, and evaluate stages."
+    },
+    {
+      "rule_id": "STD-CLS-001",
+      "current_support_grade": "E3",
+      "frozen_blocking_dimension": "profile_stability/evidence_boundary",
+      "frozen_minimum_sufficient_proof": "A machine-readable mapping that round-trips every listed state/reason without collapsing UNKNOWN or profile-specific exclusions into another state, with source and version provenance.",
+      "new_evidence_ids": ["DIA-AQ1-DB-001", "DIA-AQ1-DB-009", "DIA-AQ1-REPORT-CORPUS", "DIA-AQ1-SEED-INDEX", "DIA-AQ1-TRACEABILITY", "DIA-AQ1-CORPUS-BOUNDARY"],
+      "dimension_results": {
+        "breadth": {"status": "PASS", "basis": "Carried forward from Pass 1: seven supporting systems and four conservatively counted implementations."},
+        "independence": {"status": "PASS", "basis": "Carried forward from Pass 1: direct case/Clank behavior is counted; capability matrices and Fleet Laws are derived."},
+        "failure_success_support": {"status": "PASS", "basis": "Carried forward from Pass 1 with explicit failure and success records; new Diagnostic cases strengthen blocked/zero semantics."},
+        "observability": {"status": "PASS", "basis": "Report corpus and Diagnostic cases expose state/reason behavior, duplicate/contradiction retention, quarantine, and unresolved handling."},
+        "survivability": {"status": "PARTIAL", "basis": "Raw Diagnostic history and row-level operational state are unavailable; derived snapshots do not close that gap."},
+        "reproducibility": {"status": "PARTIAL", "basis": "References resolve to normalized records, but no complete raw corpus and mapping are available for a no-interpretation replay."},
+        "profile_stability": {"status": "PARTIAL", "basis": "The available cases cover several state/reason patterns, but no versioned cross-profile taxonomy mapping covers every requested family."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The complete classification corpus and profile mapping remain unavailable; the new records do not supply them."}
+      },
+      "finding": "Multiple explicit state/reason behaviors are demonstrated, but the required cross-profile mapping and complete state-family corpus are not established.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "A versioned cross-profile state/reason taxonomy mapping with a corpus covering known, baseline, new, duplicate, irrelevant, insufficient, blocked, source-failure, and unresolved outcomes."
+    },
+    {
+      "rule_id": "STD-DIA-001",
+      "current_support_grade": "E3",
+      "frozen_blocking_dimension": "evidence_boundary/profile_stability",
+      "frozen_minimum_sufficient_proof": "A second incident with the original historical verdict retained by hash, explicit lesson and rule linkage, executable conformance result, proposal-only revision, and no rewrite of the historical record.",
+      "new_evidence_ids": ["DIA-AQ1-REPORT-CORPUS", "DIA-AQ1-SEED-INDEX", "DIA-AQ1-TRACEABILITY", "DIA-AQ1-LEARNING-LOOP-001", "DIA-AQ1-CORPUS-BOUNDARY"],
+      "dimension_results": {
+        "breadth": {"status": "PASS", "basis": "Carried forward from Pass 1: three conservatively counted governance/participant evidence families meet the recorded breadth floor."},
+        "independence": {"status": "PASS", "basis": "Carried forward from Pass 1; the prior successful loop is not multiplied into independent primary evidence."},
+        "failure_success_support": {"status": "PASS", "basis": "Carried forward from Pass 1 with DIA-REPORT-CORPUS and the preserved Smartwatch loop; the report corpus adds executable expectations."},
+        "observability": {"status": "PASS", "basis": "The carried-forward loop exposes incident, lesson, invariant, cross-Clank evidence, executable check, and proposal-only revision fields; report corpus preserves unresolved states."},
+        "survivability": {"status": "PARTIAL", "basis": "Historical verdict preservation is demonstrated in one prior loop, but the complete raw Diagnostic ledger is unavailable."},
+        "reproducibility": {"status": "PARTIAL", "basis": "The prior executable result is preserved, but a second raw incident loop and complete ledger are unavailable."},
+        "profile_stability": {"status": "PARTIAL", "basis": "One complete loop is demonstrated; no second independent incident has traversed the complete lifecycle."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The missing complete Diagnostic ledger and second independent loop are directly material to this historical-learning rule."}
+      },
+      "finding": "One executable Smartwatch loop passes with historical verdict preservation, while the available Diagnostic corpus does not provide the required second independent complete loop or full ledger.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The complete raw Diagnostic ledger plus one additional independent real incident traversing incident, preserved verdict, lesson, candidate invariant, conformance check, and proposal-only baseline revision."
+    }
+  ],
+  "overall_result": {
+    "recommendations": {
+      "STD-EPI-003": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "STD-CLS-001": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "STD-DIA-001": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE"
+    },
+    "support_grade_update_prepared": false,
+    "support_grade_update_applied": false,
+    "rule_maturity_changed": false,
+    "another_diagnostic_pass_justified": true,
+    "another_pass_condition": "Only after the raw Diagnostic ledger/lesson corpus or a preserved second independent complete learning-loop incident becomes available; repeating the same normalized subset would not resolve the blockers."
+  },
+  "integrity": {
+    "frozen_inputs_verified_before_write": true,
+    "frozen_inputs_verified_after_write": true,
+    "existing_artifacts_changed": false,
+    "wishlist_evidence_for_other_rules_acquired": false,
+    "motherclank_evidence_acquired": false,
+    "conformance_audit_started": false,
+    "support_matrices_modified": false,
+    "ratification_decision_002_created": false,
+    "standards_clank_started": false
+  }
+}

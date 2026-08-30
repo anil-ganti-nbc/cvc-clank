@@ -1,0 +1,27 @@
+{
+  "schema_version": "cvc-e4-review-freeze.v0.1",
+  "frozen_at": "2026-08-30",
+  "purpose": "Freeze the E4 ratification contract and Pass 1 review before final audit reporting.",
+  "mutation_policy": "No frozen baseline, patient audit, fleet evidence register, learning-loop artifact, rule text, maturity, or Clank implementation may be changed by this review.",
+  "review_outputs": [
+    {"path":"standards/E4_RATIFICATION_CONTRACT_V0.1.json","sha256":"52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59"},
+    {"path":"standards/E4_REVIEW_PASS_1.jsonl","sha256":"4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0"},
+    {"path":"standards/E4_REVIEW_PASS_1.md","sha256":"3B2BEBBA04558C67FF521B0E0CD4966B32E42C0780850D1031B136578E674BA4"}
+  ],
+  "required_frozen_inputs": [
+    {"path":"standards/BASELINE_V0.1.md","sha256":"F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F"},
+    {"path":"standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md","sha256":"C62B973F1EF62EDC540D3CCFDFEADB122BDD29E119AB43A4D0F6982A5894B496"},
+    {"path":"standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md","sha256":"2341064C2664CDBAEDC56180EFB824EBAF647D0D80E95DB2DA1B7F92F68FC3BA"},
+    {"path":"standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl","sha256":"D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7"},
+    {"path":"standards/FLEET_LEARNING_LOOP_TEST_V0.1.json","sha256":"1DB16C1C1F71EB584EAD001CD0307A183FDA21683BD71C59F240B7E2B6A41C11"}
+  ],
+  "review_counts": {
+    "rules_reviewed": 18,
+    "promote_e4_recommendations": 2,
+    "retain_e3_recommendations": 16,
+    "downgrade_review_required": 0,
+    "automatic_maturity_changes": 0,
+    "automatic_rule_text_changes": 0,
+    "new_evidence_gathered_after_review": false
+  }
+}

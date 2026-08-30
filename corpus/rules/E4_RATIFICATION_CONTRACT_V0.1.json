@@ -1,0 +1,102 @@
+{
+  "schema_version": "cvc-e4-ratification-contract.v0.1",
+  "status": "PROPOSAL_FOR_RATIFICATION",
+  "created_at": "2026-08-30",
+  "purpose": "Define a reproducible evidence-quality threshold for recommending support grade E4 without changing rule text, maturity, or the frozen baseline.",
+  "frozen_inputs": {
+    "baseline": {
+      "path": "standards/BASELINE_V0.1.md",
+      "sha256": "F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F"
+    },
+    "watch_patient_1": {
+      "path": "standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md",
+      "sha256": "C62B973F1EF62EDC540D3CCFDFEADB122BDD29E119AB43A4D0F6982A5894B496"
+    },
+    "oem_patient_2": {
+      "path": "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md",
+      "sha256": "2341064C2664CDBAEDC56180EFB824EBAF647D0D80E95DB2DA1B7F92F68FC3BA"
+    },
+    "fleet_evidence_register": {
+      "path": "standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl",
+      "sha256": "D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7"
+    },
+    "smartwatch_learning_loop": {
+      "path": "standards/FLEET_LEARNING_LOOP_TEST_V0.1.json",
+      "sha256": "1DB16C1C1F71EB584EAD001CD0307A183FDA21683BD71C59F240B7E2B6A41C11"
+    }
+  },
+  "formal_distinction": {
+    "E3": "The same invariant is independently evidenced across multiple Clanks, profiles, or incident corpora, but at least one E4 quality condition remains unproven, profile-limited, or materially bounded.",
+    "E4": "A broad fleet-level invariant is demonstrated across materially different and ancestry-adjusted implementations with reproducible conformance evidence; every applicable quality dimension passes and no material unresolved evidence boundary remains for that rule.",
+    "important_non_implication": "E4 support is an evidence grade, not VERIFIED maturity, normative adoption, permission to remediate, or permission to start Standards Clank."
+  },
+  "dimension_contract": {
+    "dimension_statuses": ["PASS", "PARTIAL", "FAIL", "N/A"],
+    "na_policy": "N/A is allowed only when the rule's scope genuinely does not exercise the dimension; the row must state why. N/A never means unknown.",
+    "breadth": {
+      "required": true,
+      "minimum_floor": "At least 3 ancestry-adjusted implementation families spanning at least 2 materially different profiles, unless the rule is explicitly profile-scoped; a profile-scoped rule needs at least 2 independent implementations within that profile and a stable scope declaration.",
+      "pass_condition": "The floor is met and the systems exercise the same invariant rather than merely repeating a copied architecture summary."
+    },
+    "independence": {
+      "required": true,
+      "counting_unit": "A primary Clank implementation or independently-originated incident corpus, not an evidence record, test repetition, architecture synthesis, or Motherclank observer projection.",
+      "pass_condition": "Each counted family has primary evidence; common ancestry, copied remediation, and derived restatements are excluded or explicitly discounted.",
+      "failure_condition": "The apparent breadth is explained only by one shared framework, one copied contract, one common incident, or one derived fleet report."
+    },
+    "failure_success_support": {
+      "required_when_applicable": true,
+      "pass_condition": "At least one primary violation/failure and one primary successful behavior or repair are preserved for safety/integrity rules.",
+      "na_condition": "Only for a rule whose subject is a classification, governance, or implementation-neutral property for which a failure/success counterfactual is not a meaningful separate artifact; the row must explain this.",
+      "unknown_is_not_na": true
+    },
+    "observability": {
+      "required": true,
+      "pass_condition": "The conclusion is evaluable from durable artifacts, tests, state, or explicit diagnostics with exact provenance; subjective agreement alone is insufficient."
+    },
+    "survivability": {
+      "required_when_applicable": true,
+      "applicable_to": ["history", "persistence", "baseline", "run provenance", "delivery", "scheduler/health", "incident learning"],
+      "pass_condition": "Evidence survives or explicitly tests the relevant restart, migration, host change, workspace loss, restore, epoch, or delivery boundary, with lineage and loss states retained.",
+      "na_condition": "The rule is genuinely epistemic/research-only/governance-only and the evidence conclusion does not depend on operational state."
+    },
+    "reproducibility": {
+      "required": true,
+      "pass_condition": "Another auditor can resolve the cited record IDs and source references and rerun the named check without relying on unavailable primary artifacts."
+    },
+    "profile_stability": {
+      "required": true,
+      "pass_condition": "Applicability, exclusions, capability limits, and profile interpretation are explicit and produce the same result under repeat review."
+    }
+  },
+  "hard_blockers": [
+    "A material unresolved or unavailable primary artifact for the rule.",
+    "A contradiction that has not been retained and resolved by authority/provenance.",
+    "Breadth obtained only from derived summaries or copied/shared implementation.",
+    "A required dimension marked UNKNOWN, omitted, or treated as N/A without justification.",
+    "A success result inferred from repository presence, a first scheduler fire, a metadata-only event, or a delivery attempt alone.",
+    "A recommendation that would require changing the historical verdict, frozen audit, baseline rule text, or Clank implementation."
+  ],
+  "decision_algorithm": {
+    "PROMOTE_E4": "Recommend E4 only when current grade is E3, all applicable dimensions are PASS, all required evidence references resolve, no hard blocker applies, and the row cites exact primary evidence for each material dimension.",
+    "RETAIN_E3": "Use when the evidence is adequate for E3 and the remaining gap is a non-material ratification choice or future profile review.",
+    "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE": "Use when the rule remains supported at E3 but one or more named evidence artifacts are required before E4.",
+    "DOWNGRADE_REVIEW_REQUIRED": "Use only when new primary evidence materially challenges the current E3 support or reveals that the earlier grade depended on invalid/duplicated evidence."
+  },
+  "shared_ancestry_rules": {
+    "derived_summaries": "FLEET_LAWS, Fleet Archaeology, capability matrices, closeout summaries, and architecture traceability count as provenance/index evidence, not independent implementation families.",
+    "motherclank_observer": "Motherclank registries and projections can prove observability/contract behavior but do not count as an additional participant Clank implementation.",
+    "diagnostic_corpus": "DiagnosticBench and Golden Incident Corpus repetitions are one corpus lineage unless a case names a separate primary Clank artifact.",
+    "common_remediation": "The same Fleet-Law or shared remediation applied to several Clanks is one remediation pattern; it does not create independent success evidence by multiplication.",
+    "import_and_architecture": "Import/pilot history and common architecture are potential ancestry flags. Where direct code ancestry is not proven, count conservatively and record the uncertainty rather than infer independence.",
+    "frozen_patients": "Watch Patient #1 and OEM Radar Patient #2 are independent frozen audit subjects for portability analysis; their reports remain immutable."
+  },
+  "ratification_scope": {
+    "rules": ["STD-EPI-001", "STD-EPI-002", "STD-EPI-003", "STD-PRO-001", "STD-EVT-001", "STD-CLS-001", "STD-NEG-001", "STD-SRC-003", "STD-RES-002", "STD-RUN-001", "STD-RUN-002", "STD-HLT-001", "STD-BAS-001", "STD-HIS-001", "STD-DEL-002", "STD-LIF-001", "STD-DIA-001", "STD-STD-002"],
+    "rule_text_changed": false,
+    "maturity_changed": false,
+    "baseline_changed": false,
+    "new_evidence_gathering": false,
+    "implementation_started": false
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": "fleet-support-matrix.v0.2",
+  "matrix_version": "FLEET_SUPPORT_MATRIX_V0.2",
+  "generated_at": "2026-08-30",
+  "evidence_register": "standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl",
+  "parent_matrix": {
+    "version": "FLEET_SUPPORT_MATRIX_V0.1",
+    "path": "standards/FLEET_SUPPORT_MATRIX_V0.1.json",
+    "sha256": "AF53A7818B19D29CE3D3DC29A3619F21AB71080EC2130A164B3114AD1E7D5616",
+    "preserved": true
+  },
+  "authority": {
+    "ratification_id": "CVC-RAT-001",
+    "decision": "RATIFIED_E4",
+    "path": "standards/CVC_RATIFICATION_DECISION_001.json",
+    "sha256": "A1C1F67CA40F85348C190B55F1E7D32CD88BDD683653E8190B97860A02C09FE9"
+  },
+  "application": {
+    "type": "APPEND_ONLY_SUPPORT_GRADE_OVERLAY",
+    "support_grade_semantic_field": "support_grade",
+    "parent_storage_field": "recalculated_support",
+    "field_mapping_note": "The parent matrix stores the semantic support grade under recalculated_support; no rule-record schema migration was performed.",
+    "authorized_rule_changes": ["STD-EPI-001", "STD-STD-002"],
+    "semantic_diff_scope": "Rule support-grade values only; version, parent, authority, and distribution metadata are administrative provenance.",
+    "historical_support_grades_preserved": true,
+    "evidence_origins_preserved": true,
+    "evidence_ids_preserved": true,
+    "rule_text_preserved": true,
+    "normative_level_preserved": true,
+    "maturity_preserved": true,
+    "applicability_preserved": true
+  },
+  "baseline": {
+    "path": "standards/BASELINE_V0.1.md",
+    "sha256": "F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F",
+    "modified_by_this_pass": false
+  },
+  "interpretation": {
+    "baseline_support_is_frozen": true,
+    "recalculated_support_is_the_ratified_support_grade_overlay_not_a_maturity_change": true,
+    "e4_definition": "E4 requires fleet-wide evidence or a broadly demonstrated successful pattern; derived syntheses, a single Clank, or a single architecture document do not qualify alone.",
+    "e4_result": "TWO_RULES_RATIFIED_E4",
+    "e4_ratified_count": 2,
+    "e4_approach_count_in_parent": 18,
+    "complete_diagnostic_ledger_available": false
+  },
+  "semantic_diff": [
+    {
+      "rule_id": "STD-EPI-001",
+      "path": "STD-EPI-001.support_grade",
+      "storage_path": "rules[STD-EPI-001].recalculated_support",
+      "previous_value": "E3",
+      "new_value": "E4",
+      "authority": "CVC_RATIFICATION_DECISION_001"
+    },
+    {
+      "rule_id": "STD-STD-002",
+      "path": "STD-STD-002.support_grade",
+      "storage_path": "rules[STD-STD-002].recalculated_support",
+      "previous_value": "E3",
+      "new_value": "E4",
+      "authority": "CVC_RATIFICATION_DECISION_001"
+    }
+  ],
+  "support_grade_distribution": {
+    "field": "recalculated_support",
+    "semantic_name": "support_grade",
+    "E0": 0,
+    "E1": 1,
+    "E2": 9,
+    "E3": 26,
+    "E4": 2,
+    "total_rules": 38
+  },
+  "rules": [
+    {"rule_id":"STD-EPI-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":10,"primary_records":7,"recalculated_support":"E4","e4_assessment":"APPROACHING_E4","supporting_clank_families":["watch-clank","oem-radar","smartwatch-clank","feature-phone-clank","smartphone-clank"],"evidence_gap":"Need refreshed live evidence across more lanes and a reviewed profile test."},
+    {"rule_id":"STD-EPI-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":4,"primary_records":2,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","diagnostic-clank"],"evidence_gap":"Direct cross-Clank discovery/evidence checks remain uneven."},
+    {"rule_id":"STD-EPI-003","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR, RESEARCH","ingested_records":15,"primary_records":9,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","korean-tech-wire","motherclank"],"evidence_gap":"Complete raw Diagnostic ledger and fresh lane-level terminal accounting are still missing."},
+    {"rule_id":"STD-SCP-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, SPECIALIST_PROFILE","ingested_records":7,"primary_records":2,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","watch-clank","tablet-clank","motherclank"],"evidence_gap":"Primary source-scope evidence is concentrated in OEM; cross-fleet synthesis is derived."},
+    {"rule_id":"STD-PRO-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":24,"primary_records":15,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["watch-clank","oem-radar","smartwatch-clank","feature-phone-clank","korean-tech-wire","motherclank","diagnostic-clank"],"evidence_gap":"Fresh host verification and stable adapter evidence remain required."},
+    {"rule_id":"STD-EVI-001","baseline_support":"E0","maturity":"CANDIDATE","applicability":"RESEARCH, SPECIALIST_PROFILE","ingested_records":4,"primary_records":4,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["oem-radar","watch-clank"],"evidence_gap":"No second operational scoring system demonstrates four independent confidence/utility dimensions."},
+    {"rule_id":"STD-EVI-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH","ingested_records":6,"primary_records":6,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","korean-tech-wire"],"evidence_gap":"Contradiction handling is well represented in tests, less so in independent live ledgers."},
+    {"rule_id":"STD-IDN-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, SPECIALIST_PROFILE","ingested_records":1,"primary_records":1,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","watch-clank","smartphone-clank"],"evidence_gap":"New register evidence is one regional identity case; blocking cross-Clank identity ADR remains open."},
+    {"rule_id":"STD-EVT-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, COLLECTOR","ingested_records":7,"primary_records":4,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartphone-clank","feature-phone-clank","motherclank"],"evidence_gap":"Need equivalent positive event-layer evidence from more independent Clank implementations."},
+    {"rule_id":"STD-EVT-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, COLLECTOR","ingested_records":4,"primary_records":4,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["watch-clank","oem-radar"],"evidence_gap":"Date-role evidence remains concentrated in research/novelty histories."},
+    {"rule_id":"STD-CLS-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR, RESEARCH","ingested_records":23,"primary_records":15,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","korean-tech-wire","motherclank"],"evidence_gap":"A frozen taxonomy/profile mapping is still pending."},
+    {"rule_id":"STD-FIN-001","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":2,"primary_records":1,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["diagnostic-clank","motherclank"],"evidence_gap":"Finalization evidence remains Story/Diagnostic-led, not independent fleet operation."},
+    {"rule_id":"STD-FIN-002","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, SPECIALIST_PROFILE","ingested_records":2,"primary_records":1,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["diagnostic-clank","motherclank"],"evidence_gap":"No new collector-side FOUND/output contract evidence was ingested."},
+    {"rule_id":"STD-NEG-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, SPECIALIST_PROFILE","ingested_records":11,"primary_records":8,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","korean-tech-wire","smartphone-clank","motherclank"],"evidence_gap":"Need more independently audited bounded negatives with complete budgets and scope."},
+    {"rule_id":"STD-SRC-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, RESEARCH, SPECIALIST_PROFILE","ingested_records":2,"primary_records":2,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","korean-tech-wire"],"evidence_gap":"Source permission tiers need broader independent implementation evidence."},
+    {"rule_id":"STD-SRC-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR, RESEARCH","ingested_records":1,"primary_records":1,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["korean-tech-wire","oem-radar"],"evidence_gap":"This pass adds one direct host-block case; broader fetch/admissibility samples remain needed."},
+    {"rule_id":"STD-SRC-003","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"SPECIALIST_PROFILE","ingested_records":6,"primary_records":6,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","feature-phone-clank","free-game-tracker","tablet-clank"],"evidence_gap":"Coverage declarations are not yet normalized into one machine-readable profile schema."},
+    {"rule_id":"STD-SRC-004","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"CORE, SPECIALIST_PROFILE","ingested_records":1,"primary_records":1,"recalculated_support":"E2","e4_assessment":"CHALLENGED_RETAIN","supporting_clank_families":["oem-radar"],"evidence_gap":"Frozen OEM Patient #2 found classification missing; remediation is intentionally out of scope."},
+    {"rule_id":"STD-COV-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"SPECIALIST_PROFILE, RESEARCH","ingested_records":6,"primary_records":6,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","watch-clank","free-game-tracker","feature-phone-clank"],"evidence_gap":"Positive coverage recall remains weak; source gaps are better evidenced than successful recall."},
+    {"rule_id":"STD-COV-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"SPECIALIST_PROFILE, RESEARCH","ingested_records":3,"primary_records":3,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","watch-clank","free-game-tracker"],"evidence_gap":"Notebookcheck precision evidence remains lane-specific and no new positive target coverage was established."},
+    {"rule_id":"STD-RES-001","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"RESEARCH","ingested_records":0,"primary_records":0,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["story-clank"],"evidence_gap":"No fleet-history record directly exercises compound-request decomposition."},
+    {"rule_id":"STD-RES-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"RESEARCH, SPECIALIST_PROFILE","ingested_records":4,"primary_records":4,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","free-game-tracker"],"evidence_gap":"Search planning evidence is research-profile heavy and lacks a common run schema."},
+    {"rule_id":"STD-RUN-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"COLLECTOR","ingested_records":9,"primary_records":8,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","korean-tech-wire","smartphone-clank","feature-phone-clank","motherclank"],"evidence_gap":"A common immutable run-record conformance fixture is still needed."},
+    {"rule_id":"STD-RUN-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"COLLECTOR","ingested_records":10,"primary_records":9,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartphone-clank","feature-phone-clank","korean-tech-wire","motherclank"],"evidence_gap":"Fresh live verification of zero/empty semantics is still uneven across lanes."},
+    {"rule_id":"STD-HLT-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR, DELIVERY","ingested_records":24,"primary_records":17,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","smartphone-clank","korean-tech-wire","motherclank"],"evidence_gap":"The principle is broad, but host-level liveness and outcome attestation are still incomplete."},
+    {"rule_id":"STD-BAS-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"COLLECTOR, SPECIALIST_PROFILE","ingested_records":13,"primary_records":10,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","smartphone-clank","motherclank"],"evidence_gap":"Epoch and baseline evidence is strong but not uniformly live-verified."},
+    {"rule_id":"STD-HIS-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR","ingested_records":9,"primary_records":7,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","smartwatch-clank","feature-phone-clank","korean-tech-wire","watch-clank","motherclank"],"evidence_gap":"Durable off-host redundancy and full row-level continuity confirmation remain open."},
+    {"rule_id":"STD-DEL-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"DELIVERY","ingested_records":9,"primary_records":4,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["oem-radar","feature-phone-clank","free-game-tracker","smartphone-clank","motherclank"],"evidence_gap":"Positive outbox evidence is concentrated in OEM; Feature Phone evidence is partly synthesized from architecture history."},
+    {"rule_id":"STD-DEL-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"DELIVERY, CORE","ingested_records":14,"primary_records":9,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","feature-phone-clank","smartphone-clank","korean-tech-wire","motherclank"],"evidence_gap":"A common independent delivery/event separation check is not yet adopted fleet-wide."},
+    {"rule_id":"STD-DEL-003","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"DELIVERY","ingested_records":5,"primary_records":4,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["oem-radar","watch-clank","motherclank"],"evidence_gap":"Volume/flood evidence exists, but a second independent delivery corpus is still needed."},
+    {"rule_id":"STD-GUI-001","baseline_support":"E1","maturity":"CANDIDATE","applicability":"GUI","ingested_records":0,"primary_records":0,"recalculated_support":"E1","e4_assessment":"E1_RETAIN","supporting_clank_families":["watch-clank"],"evidence_gap":"No fleet GUI comparison was ingested."},
+    {"rule_id":"STD-GUI-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"GUI, CORE","ingested_records":0,"primary_records":0,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["story-clank","watch-clank"],"evidence_gap":"The fleet records states, but this pass did not audit rendered UI surfaces."},
+    {"rule_id":"STD-SOK-001","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"COLLECTOR","ingested_records":12,"primary_records":10,"recalculated_support":"E2","e4_assessment":"E2_RETAIN","supporting_clank_families":["oem-radar","korean-tech-wire","watch-clank","motherclank"],"evidence_gap":"Natural-duration soak evidence is present in parts, but no common graduation check is fleet-verified."},
+    {"rule_id":"STD-LIF-001","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"CORE, COLLECTOR","ingested_records":13,"primary_records":7,"recalculated_support":"E2","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","smartwatch-clank","feature-phone-clank","korean-tech-wire","motherclank","watch-clank"],"evidence_gap":"Lifecycle vocabulary and live health dimensions need profile review before a broader grade."},
+    {"rule_id":"STD-DIA-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":11,"primary_records":6,"recalculated_support":"E3","e4_assessment":"APPROACHING_E4","supporting_clank_families":["diagnostic-clank","motherclank","oem-radar","watch-clank","smartwatch-clank","feature-phone-clank"],"evidence_gap":"One learning-loop execution passed, but the complete raw Diagnostic ledger and reviewed baseline revision are still missing."},
+    {"rule_id":"STD-SEC-001","baseline_support":"E2","maturity":"PROVISIONAL","applicability":"CORE, DELIVERY","ingested_records":2,"primary_records":1,"recalculated_support":"E2","e4_assessment":"CHALLENGED_RETAIN","supporting_clank_families":["oem-radar","diagnostic-clank"],"evidence_gap":"Frozen OEM finding is a live-looking committed secret failure; no fleet-wide secret scan corpus is present."},
+    {"rule_id":"STD-STD-001","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":7,"primary_records":0,"recalculated_support":"E3","e4_assessment":"E3_RETAIN","supporting_clank_families":["diagnostic-clank","motherclank","oem-radar","watch-clank"],"evidence_gap":"All new evidence is derived governance/traceability material; normative review and version freeze are pending."},
+    {"rule_id":"STD-STD-002","baseline_support":"E3","maturity":"PROVISIONAL","applicability":"CORE","ingested_records":12,"primary_records":7,"recalculated_support":"E4","e4_assessment":"APPROACHING_E4","supporting_clank_families":["oem-radar","watch-clank","smartwatch-clank","feature-phone-clank","korean-tech-wire","motherclank"],"evidence_gap":"The rule travels across implementations, but conformance must remain observable-behavior based."}
+  ]
+}

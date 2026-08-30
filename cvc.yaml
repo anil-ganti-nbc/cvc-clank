@@ -1,0 +1,6 @@
+# CVC is complete archaeology/governance work. Runtime actions are explicit and append-only.
+mission_state: CVC_MISSION_COMPLETE_WITH_OPEN_EVIDENCE_BLOCKERS
+board_path: corpus/board/CVC_FINAL_BOARD_V0.1.json
+matrix_path: corpus/board/FLEET_SUPPORT_MATRIX_V0.2.json
+triggers_path: corpus/triggers/CVC_FUTURE_EVIDENCE_TRIGGERS_V0.1.jsonl
+reasoning_enabled: false

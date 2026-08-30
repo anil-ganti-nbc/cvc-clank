@@ -1,0 +1,241 @@
+{
+  "schema_version": "cvc-motherclank-e4-review.v0.1",
+  "review_id": "CVC-MOTHERCLANK-E4-REVIEW-001",
+  "review_date": "2026-08-30",
+  "scope": "CVC TARGETED EVIDENCE ACQUISITION #2: MOTHERCLANK HOST CONTINUITY",
+  "e4_contract": {
+    "path": "standards/E4_RATIFICATION_CONTRACT_V0.1.json",
+    "version": "cvc-e4-ratification-contract.v0.1",
+    "sha256": "52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59"
+  },
+  "wishlist_source": {
+    "path": "standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.jsonl",
+    "sha256": "DB08540B54ACFDE18B7DD79E7593CDD7AD57756481BEEFAA14EFD1494A57C1BA",
+    "cluster_id": "MOTHERCLANK_HOST_CONTINUITY",
+    "rule_count": 8
+  },
+  "scope_rules": [
+    "STD-EPI-003",
+    "STD-PRO-001",
+    "STD-RUN-001",
+    "STD-RUN-002",
+    "STD-HLT-001",
+    "STD-BAS-001",
+    "STD-HIS-001",
+    "STD-LIF-001"
+  ],
+  "corpus_boundary": {
+    "raw_motherclank_artifacts_available_in_workspace": false,
+    "raw_ktw_artifacts_available_in_workspace": false,
+    "raw_oem_artifacts_available_in_workspace": false,
+    "available_material": "Frozen fleet-register rows, their recorded provenance references and source hashes, and previously frozen reviews.",
+    "unavailable_material": "The external Motherclank ledger rows, host state, deployment records, timer/cron/systemd state, variable batches, restore manifests, and raw linked Clank artifacts named by the register.",
+    "handling": "Historical claims remain historical. Current host and scheduler authority are CURRENTLY_UNVERIFIED. No missing row, timestamp, supersession state, or current authority was inferred.",
+    "acquisition_mode": "NORMALIZED_FROZEN_REGISTER_RECORDS_ONLY",
+    "new_external_evidence_gathered": false
+  },
+  "evidence_summary": {
+    "total_records": 17,
+    "primary_records": 10,
+    "derived_records": 3,
+    "missing_expected_evidence_records": 4,
+    "executable_conformance_records": 0,
+    "primary_record_ids": [
+      "MC-AQ001-INC-SCHED-GAP",
+      "MC-AQ001-SW-RESTORE",
+      "MC-AQ001-FPC-EPOCH",
+      "MC-AQ001-ACT011-SW-RESTORE",
+      "MC-AQ001-ACT011-FPC-RESTORE",
+      "MC-AQ001-SCHED-TRACE",
+      "MC-AQ001-KTW-MIGRATION",
+      "MC-AQ001-KTW-DUE-GATING",
+      "MC-AQ001-OEM-BASELINE",
+      "MC-AQ001-OEM-LOCK"
+    ],
+    "derived_record_ids": [
+      "MC-AQ001-LIVE-CLOSEOUT",
+      "MC-AQ001-EXPECTATIONS-AUTHORITY",
+      "MC-AQ001-CAPABILITY-MATRIX"
+    ],
+    "missing_record_ids": [
+      "MC-AQ001-MISSING-HOST-AUTHORITY-BUNDLE",
+      "MC-AQ001-MISSING-END-TO-END-RUN-BUNDLE",
+      "MC-AQ001-MISSING-RESTORE-ROWS",
+      "MC-AQ001-MISSING-DURABLE-REDUNDANCY"
+    ]
+  },
+  "continuity_findings": {
+    "scheduler_authority": {
+      "historical_state": "HISTORICAL_FACT",
+      "current_state": "CURRENTLY_UNVERIFIED",
+      "finding": "The preserved scheduler incident and trace batch distinguish expected, fired, started, completed, no-work-due, and unknown. The expectations registry preserves historical conflicts and lane-scoped authority semantics, but no current timer/cron/systemd or deployment-owner artifact is accessible.",
+      "supported_by": ["MC-AQ001-INC-SCHED-GAP", "MC-AQ001-SCHED-TRACE", "MC-AQ001-EXPECTATIONS-AUTHORITY"],
+      "not_established": ["current scheduler owner", "current deployment host", "retirement of every stale scheduler", "current live authority"]
+    },
+    "host_and_deployment": {
+      "historical_state": "HISTORICAL_FACT",
+      "current_state": "CURRENTLY_UNVERIFIED",
+      "finding": "KTW documents a migration contract and the Motherclank closeout records lane metadata, but neither is a current read-only host bundle that can be re-inspected.",
+      "supported_by": ["MC-AQ001-KTW-MIGRATION", "MC-AQ001-LIVE-CLOSEOUT"],
+      "not_established": ["current revision/datastore pairing for two lanes", "current deployment identity", "repeat inspection after host change"]
+    },
+    "process_and_materialization": {
+      "finding": "The scheduler-gap incident demonstrates upstream scheduler activity without process/run materialization. The trace batch preserves explicit unknowns but does not provide one complete per-unit stage-accounting bundle.",
+      "supported_by": ["MC-AQ001-INC-SCHED-GAP", "MC-AQ001-SCHED-TRACE", "MC-AQ001-KTW-DUE-GATING"],
+      "remaining_gap": "No preserved end-to-end bundle reconciles all scheduler, process, fetch, parse, persist, evaluate, terminal/pending, restart, and zero-silent-drop states."
+    },
+    "storage_restore": {
+      "finding": "Smartwatch restore retained epoch lineage and a bounded gap. Feature Phone total loss created an explicit new epoch and did not reconstruct the prior epoch. ACT-011 isolated restore drills passed, but durable off-host redundancy remains open.",
+      "supported_by": ["MC-AQ001-SW-RESTORE", "MC-AQ001-FPC-EPOCH", "MC-AQ001-ACT011-SW-RESTORE", "MC-AQ001-ACT011-FPC-RESTORE"],
+      "remaining_gap": "Row-level restore reconciliation and durable off-host copies are unavailable."
+    },
+    "migration_and_baseline": {
+      "finding": "KTW preserves migration requirements as an operational contract. OEM Radar provides a historical idempotent baseline replay with 1,630 hashes and zero re-sighting flood. These do not establish Motherclank row-level restoration or current host authority.",
+      "supported_by": ["MC-AQ001-KTW-MIGRATION", "MC-AQ001-OEM-BASELINE"],
+      "remaining_gap": "Current host baseline IDs, epoch/import hashes, gap flags, suppression counts, and no-novelty outcomes are not available for repeat inspection."
+    },
+    "historical_state": {
+      "finding": "Historical incident verdicts, lessons, provenance hashes, bounded debt, and explicit unknown states survive in the normalized register. Whether all underlying run, observation, health, dedupe, feedback, and restore rows survive a host/volume boundary remains unverified.",
+      "supported_by": ["MC-AQ001-INC-SCHED-GAP", "MC-AQ001-SW-RESTORE", "MC-AQ001-FPC-EPOCH", "MC-AQ001-LIVE-CLOSEOUT"],
+      "remaining_gap": "No row-level Motherclank continuity bundle is accessible."
+    }
+  },
+  "host_authority_status": {
+    "historical_scheduler_and_deployment_facts": "HISTORICAL_FACT",
+    "current_scheduler_authority": "CURRENTLY_UNVERIFIED",
+    "current_deployment_owner": "CURRENTLY_UNVERIFIED",
+    "historical_duplicate_or_stale_paths": "PRESERVED_AS_HISTORICAL_FACT",
+    "restored_volume_states": "RESTORED_OR_RECREATED_AS_RECORDED",
+    "destroyed_prior_epoch": "DESTROYED_AND_NOT_RECONSTRUCTED",
+    "inferred_current_authority": "NOT_ALLOWED"
+  },
+  "shared_ancestry_and_counting": {
+    "counting_policy": "Count primary Clank implementations or independently originated incident corpora, not evidence records, derived closeout/capability summaries, architecture synthesis, or Motherclank observer projections.",
+    "independent_systems_represented_in_new_package": ["Smartwatch Clank", "Feature Phone Clank", "Korean Tech Wire", "OEM Radar", "Motherclank observer"],
+    "motherclank_observer_counted_as_implementation": false,
+    "derived_records_excluded_from_independence": ["MC-AQ001-LIVE-CLOSEOUT", "MC-AQ001-EXPECTATIONS-AUTHORITY", "MC-AQ001-CAPABILITY-MATRIX"],
+    "shared_ancestry_caveat": "The records are normalized from one frozen fleet register and several linked architecture/continuity sources. This package does not claim that source-specific implementation ancestry has been independently re-established.",
+    "double_counting_controls": ["ACT-011 Smartwatch and Feature Phone records remain separate lane evidence but share the same ACT-011 continuity source family.", "Closeout, expectations, and capability snapshots are derived and do not add implementation families.", "OEM baseline and lock records share one OEM report hash and are not treated as independent from one another." ]
+  },
+  "rule_reviews": [
+    {
+      "rule_id": "STD-EPI-003",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/profile_stability","specific_missing_evidence":"One independently implemented collector with durable per-unit terminal classification and a preserved production run demonstrating no silent candidate loss across scheduler, process, fetch, parse, persist, and evaluate stages.","best_candidate_system_source":"KTW or OEM Radar plus Motherclank","why_it_matters":"The frozen review records terminal and pending states, but missing raw Diagnostic and Motherclank host artifacts prevent row-level fleet confirmation and the vocabulary remains profile-extensible.","minimum_sufficient_proof":"One end-to-end run bundle with stage IDs, terminal or pending reason, restart/observer boundaries, and an explicit accounting reconciliation showing no silent drops.","priority":"P0","blocking_evidence_refs":["DIAG-CORPUS-BOUNDARY","ARCH-REPORT-EVIDENCE-BOUNDARY","MC-INC-20260822-SCHED-GAP"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-SCHED-TRACE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-KTW-MIGRATION","MC-AQ001-KTW-DUE-GATING","MC-AQ001-MISSING-END-TO-END-RUN-BUNDLE"],
+      "independent_systems_represented":["Smartwatch Clank","Feature Phone Clank","Korean Tech Wire","OEM Radar","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review records at least four ancestry-adjusted implementation families across collector, research, and supervisory profiles."},"independence":{"status":"PASS","basis":"Direct incident and implementation evidence are counted conservatively; Motherclank summaries are not counted as implementations."},"failure_success_support":{"status":"PASS","basis":"The scheduler/materialization gap is a primary failure; KTW due-gating and preserved explicit outcome behavior provide primary successful/repair evidence."},"observability":{"status":"PASS","basis":"Scheduler boundaries, terminal/pending concepts, run materialization stages, and unknown states are recorded with provenance."},"survivability":{"status":"PARTIAL","basis":"Scheduler and storage-loss lessons survive in historical records, but current host rows and durable end-to-end terminal accounting are unavailable."},"reproducibility":{"status":"PARTIAL","basis":"Register IDs and source hashes resolve, but raw linked artifacts cannot be rerun from this workspace."},"profile_stability":{"status":"PARTIAL","basis":"The boundary travels, but terminal vocabularies remain profile-extensible and the minimum end-to-end fixture is absent."},"evidence_boundary":{"status":"PARTIAL","basis":"The missing Diagnostic corpus and raw Motherclank host/run artifacts are material."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"PARTIALLY_SURVIVES","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; also preserved Pass 1 boundaries DIAG-CORPUS-BOUNDARY and ARCH-REPORT-EVIDENCE-BOUNDARY."],
+      "decision_basis":"The acquisition strengthens the historical boundary but does not prove durable per-unit terminal accounting across all stages."
+    },
+    {
+      "rule_id": "STD-PRO-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/evidence_boundary","specific_missing_evidence":"A current read-only host bundle for at least two lanes containing deployed revision, instance/lane, datastore identity, collector revision, source/run IDs, and decision provenance, paired with a preserved Motherclank batch.","best_candidate_system_source":"Motherclank plus KTW/OEM/FPC","why_it_matters":"Migration and restore examples exist, but host claims and variable rows remain partly snapshot-only or unavailable.","minimum_sufficient_proof":"Two lane bundles resolve every required provenance field to a current host artifact and preserve the corresponding run/decision lineage across a repeat inspection.","priority":"P0","blocking_evidence_refs":["MC-LIVE-CLOSEOUT","ARCH-REPORT-EVIDENCE-BOUNDARY","DIAG-CORPUS-BOUNDARY"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-SW-RESTORE","MC-AQ001-ACT011-SW-RESTORE","MC-AQ001-ACT011-FPC-RESTORE","MC-AQ001-SCHED-TRACE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-EXPECTATIONS-AUTHORITY","MC-AQ001-KTW-MIGRATION","MC-AQ001-KTW-DUE-GATING","MC-AQ001-OEM-BASELINE","MC-AQ001-OEM-LOCK","MC-AQ001-MISSING-HOST-AUTHORITY-BUNDLE","MC-AQ001-MISSING-DURABLE-REDUNDANCY"],
+      "independent_systems_represented":["Smartwatch Clank","Feature Phone Clank","Korean Tech Wire","OEM Radar","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies five participant implementation families across collector, research, and supervisory profiles."},"independence":{"status":"PASS","basis":"Participant implementations are distinguished from Motherclank observer projections and derived closeout material."},"failure_success_support":{"status":"PASS","basis":"The scheduler-gap/host-loss incident is primary failure evidence; KTW migration, due-gating, restore drills, OEM baseline replay, and lock reconciliation are primary success/repair evidence."},"observability":{"status":"PASS","basis":"Source, lane, revision, datastore, run, and decision references are present in the frozen records."},"survivability":{"status":"PARTIAL","basis":"Migration and restore patterns exist, but current host claims, raw variable rows, and durable off-host continuity are not available."},"reproducibility":{"status":"PARTIAL","basis":"Source IDs and hashes are preserved, but the external host bundles cannot be re-inspected here."},"profile_stability":{"status":"PASS","basis":"The required provenance fields are implementation-neutral across the represented profiles."},"evidence_boundary":{"status":"PARTIAL","basis":"Current two-lane host verification and full raw incident provenance remain materially unavailable."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"UNVERIFIED","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; current scheduler owner, deployment identity, datastore identity, and run/decision lineage must be resolved from two re-inspectable host bundles."],
+      "decision_basis":"The package shows strong provenance design and historical repairs but no current host bundle satisfying the frozen minimum proof."
+    },
+    {
+      "rule_id": "STD-RUN-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/profile_stability","specific_missing_evidence":"A cross-profile immutable run-record conformance bundle with run ID, start/end, revision, source/lane, fetch/parse counts, classification/event/delivery totals, and restart/migration provenance.","best_candidate_system_source":"KTW plus OEM Radar and Motherclank","why_it_matters":"Run records exist across systems, but fields differ and host-level ledgers are incomplete; a common observable minimum has not been tested.","minimum_sufficient_proof":"Two independent implementations map their native records to the same minimum fixture and pass a restart or migration replay without losing counts or lineage.","priority":"P0","blocking_evidence_refs":["MC-LIVE-CLOSEOUT","MC-SCHED-TRACE-BATCH","DIAG-CORPUS-BOUNDARY"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-SCHED-TRACE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-KTW-MIGRATION","MC-AQ001-KTW-DUE-GATING","MC-AQ001-OEM-LOCK","MC-AQ001-MISSING-END-TO-END-RUN-BUNDLE"],
+      "independent_systems_represented":["Korean Tech Wire","OEM Radar","Smartwatch Clank","Feature Phone Clank","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies four direct collector implementations across materially different profiles."},"independence":{"status":"PASS","basis":"Direct collector behavior is counted; Motherclank remains an observer and common summaries are excluded."},"failure_success_support":{"status":"PASS","basis":"Scheduler/materialization and due-gating failures are preserved alongside KTW repair and OEM lock success."},"observability":{"status":"PASS","basis":"Run IDs, times, revisions, source/lane, outcomes, and counts are visible in the cited records."},"survivability":{"status":"PARTIAL","basis":"Some restart/migration behavior is preserved, but host-level run ledgers and row-level continuity are unavailable."},"reproducibility":{"status":"PARTIAL","basis":"The named source hashes resolve only to external artifacts, so the common fixture cannot be rerun here."},"profile_stability":{"status":"PARTIAL","basis":"Native run fields differ and no common observable-minimum adapter fixture has been exercised."},"evidence_boundary":{"status":"PARTIAL","basis":"The missing complete run bundle and Diagnostic corpus prevent E4 fleet accounting."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"PARTIALLY_SURVIVES","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"UNVERIFIED","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; no common immutable fixture has been replayed through restart/migration with counts and lineage preserved."],
+      "decision_basis":"The evidence demonstrates useful run-boundary behavior but not cross-profile common run-record conformance."
+    },
+    {
+      "rule_id": "STD-RUN-002",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/evidence_boundary","specific_missing_evidence":"A current two-lane run bundle showing empty, blocked, no-work-due, baseline-suppressed, and unknown outcomes as explicit immutable records rather than missing rows.","best_candidate_system_source":"KTW and OEM Radar","why_it_matters":"The distinctions are recorded, but supporting host artifacts are incomplete and some evidence is derived snapshots.","minimum_sufficient_proof":"A fixture/live replay across two lanes with explicit status, reason, run ID, and zero-row accounting for each outcome, demonstrating no missing-run ambiguity.","priority":"P0","blocking_evidence_refs":["DIAG-CORPUS-BOUNDARY","MC-LIVE-CLOSEOUT","MC-SCHED-TRACE-BATCH"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-FPC-EPOCH","MC-AQ001-SCHED-TRACE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-KTW-DUE-GATING","MC-AQ001-OEM-BASELINE","MC-AQ001-MISSING-END-TO-END-RUN-BUNDLE"],
+      "independent_systems_represented":["Korean Tech Wire","OEM Radar","Feature Phone Clank","Smartwatch Clank","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies four direct collector families and multiple materially distinct explicit outcome cases."},"independence":{"status":"PASS","basis":"Direct KTW/OEM/Feature Phone/Smartphone behavior is counted conservatively; closeout is not an implementation."},"failure_success_support":{"status":"PASS","basis":"Feature Phone epoch loss and scheduler-gap cases provide primary failure evidence; KTW due gating and OEM baseline replay provide success/repair evidence."},"observability":{"status":"PASS","basis":"Empty, blocked, no-work-due, baseline-suppressed, and unknown distinctions are explicitly recorded in the frozen evidence."},"survivability":{"status":"PARTIAL","basis":"The distinction survives in historical records and selected replay behavior, but current lane-level host artifacts are unavailable."},"reproducibility":{"status":"PARTIAL","basis":"The exact current two-lane replay bundle is not available for rerun."},"profile_stability":{"status":"PASS","basis":"The status distinction is stable across collector profiles in the frozen review."},"evidence_boundary":{"status":"PARTIAL","basis":"The raw ledger and current host artifacts are missing; derived snapshots cannot close that boundary."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"PARTIALLY_SURVIVES","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; each outcome needs immutable status/reason/run ID/zero-row accounting across two current lanes."],
+      "decision_basis":"The semantic distinction is strong, but the current two-lane host proof and no-missing-run reconciliation are absent."
+    },
+    {
+      "rule_id": "STD-HLT-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/profile_stability","specific_missing_evidence":"A live read-only health-plane trace from a second collector or delivery-enabled system pairing scheduler, process, application, fetch, parse, persistence, evaluation, queue, and delivery states in one lineage.","best_candidate_system_source":"Motherclank plus Smartphone or Feature Phone Clank","why_it_matters":"The multi-plane principle is broad, but host-level liveness, outcome attestation, and raw variable history remain incomplete.","minimum_sufficient_proof":"One independent trace showing each plane's state and provenance, with an upstream success that does not upgrade a failed or unobserved downstream plane.","priority":"P0","blocking_evidence_refs":["MC-SCHED-TRACE-BATCH","MC-LIVE-CLOSEOUT","DIAG-CORPUS-BOUNDARY"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-SCHED-TRACE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-EXPECTATIONS-AUTHORITY","MC-AQ001-CAPABILITY-MATRIX","MC-AQ001-KTW-DUE-GATING","MC-AQ001-OEM-LOCK","MC-AQ001-MISSING-HOST-AUTHORITY-BUNDLE","MC-AQ001-MISSING-END-TO-END-RUN-BUNDLE"],
+      "independent_systems_represented":["Korean Tech Wire","OEM Radar","Smartwatch Clank","Feature Phone Clank","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies five direct Clank families across collector, research, and supervisory profiles."},"independence":{"status":"PASS","basis":"Direct Clank failure/repair traces are separated from Motherclank observer and capability projections."},"failure_success_support":{"status":"PASS","basis":"Scheduler-gap and KTW host-block history supply failures; due-gating and OEM lock/health boundary behavior supply successful repairs."},"observability":{"status":"PASS","basis":"Execution, collection, semantic, source, persistence, evaluation, queue, and delivery distinctions are recorded; delivery content is not acquired in this pass."},"survivability":{"status":"PARTIAL","basis":"The multi-plane boundary survives historical incident and probe records, but outcome attestation and host variable history are incomplete."},"reproducibility":{"status":"PARTIAL","basis":"The live read-only trace cannot be rerun because external host artifacts are absent."},"profile_stability":{"status":"PARTIAL","basis":"The principle travels, but exact health-plane vocabulary and current adapter coverage remain profile-specific."},"evidence_boundary":{"status":"PARTIAL","basis":"A durable independent health-plane trace and current host bundle are missing."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"PARTIALLY_SURVIVES","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"UNVERIFIED","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; one independent current trace must preserve each health plane and prevent upstream success from upgrading downstream failure/unobserved."],
+      "decision_basis":"The multi-plane invariant is well evidenced conceptually, but not by a repeatable current host trace satisfying the frozen minimum."
+    },
+    {
+      "rule_id": "STD-BAS-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/evidence_boundary","specific_missing_evidence":"Row-level Motherclank restore and epoch evidence plus current host baseline IDs proving that restore, new epoch, and baseline suppression remain distinct after host restoration.","best_candidate_system_source":"Smartwatch/FPC restore records plus Motherclank","why_it_matters":"Restore drills and migration evidence exist, but durable off-host copies and complete row-level confirmation remain open.","minimum_sufficient_proof":"A restore/recovery record that resolves exact import hash, epoch, continuity gap, baseline flag, suppression count, and no-novelty outcome on the restored host.","priority":"P0","blocking_evidence_refs":["MC-ACT011-SW-RESTORE","MC-ACT011-FPC-RESTORE","MC-INC-20260823-SW-RESTORE","MC-INC-20260823-FPC-EPOCH"]},
+      "evidence_ids_used":["MC-AQ001-SW-RESTORE","MC-AQ001-FPC-EPOCH","MC-AQ001-ACT011-SW-RESTORE","MC-AQ001-ACT011-FPC-RESTORE","MC-AQ001-KTW-MIGRATION","MC-AQ001-OEM-BASELINE","MC-AQ001-MISSING-RESTORE-ROWS","MC-AQ001-MISSING-DURABLE-REDUNDANCY"],
+      "independent_systems_represented":["Smartwatch Clank","Feature Phone Clank","Korean Tech Wire","OEM Radar"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies four direct baseline implementations across collector and specialist profiles."},"independence":{"status":"PASS","basis":"Smartwatch, Feature Phone, KTW, and OEM evidence are treated as distinct patterns; shared architecture summaries are excluded."},"failure_success_support":{"status":"PASS","basis":"Feature Phone total loss and Smartwatch volume loss provide failures; ACT-011 restore, KTW contract, and OEM replay provide success/recovery evidence."},"observability":{"status":"PASS","basis":"Epoch IDs, restore lineage, import hashes, baseline flags, and suppression counts are explicitly represented in the cited material."},"survivability":{"status":"PARTIAL","basis":"Restore drills and migration/replay patterns exist, but durable off-host redundancy and complete Motherclank row confirmation remain open."},"reproducibility":{"status":"PARTIAL","basis":"The frozen references and hashes are preserved, but row-level restore evidence cannot be rerun here."},"profile_stability":{"status":"PASS","basis":"Baseline, rebaseline, restore, and epoch distinctions are applicable across the represented profiles."},"evidence_boundary":{"status":"PARTIAL","basis":"The exact current host IDs and row-level restoration proof are materially unavailable."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"UNVERIFIED","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"PARTIALLY_SURVIVES","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; row-level restore/epoch/baseline reconciliation with exact import hash, epoch, gap, baseline flag, suppression count, and no-novelty result is still missing."],
+      "decision_basis":"The historical semantics and recovery drills are useful but do not prove durable row-level continuity after host restoration."
+    },
+    {
+      "rule_id": "STD-HIS-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/evidence_boundary","specific_missing_evidence":"A row-level migration or restore record from a second lane with preserved identity, observations, events, health, dedupe, feedback, and outbox accounting plus explicit loss states.","best_candidate_system_source":"Smartwatch/FPC restore records plus Motherclank","why_it_matters":"Restore drills pass for two lanes, but durable off-host redundancy and complete row-level continuity evidence are absent.","minimum_sufficient_proof":"An offline restore proof that reconciles preserved and lost rows across all listed layers, identifies the epoch/restore boundary, and retains the original lineage.","priority":"P0","blocking_evidence_refs":["MC-INC-20260823-SW-RESTORE","MC-INC-20260823-FPC-EPOCH","MC-ACT011-SW-RESTORE","MC-ACT011-FPC-RESTORE"]},
+      "evidence_ids_used":["MC-AQ001-SW-RESTORE","MC-AQ001-FPC-EPOCH","MC-AQ001-ACT011-SW-RESTORE","MC-AQ001-ACT011-FPC-RESTORE","MC-AQ001-KTW-MIGRATION","MC-AQ001-OEM-BASELINE","MC-AQ001-MISSING-RESTORE-ROWS","MC-AQ001-MISSING-DURABLE-REDUNDANCY"],
+      "independent_systems_represented":["Smartwatch Clank","Feature Phone Clank","Korean Tech Wire","OEM Radar"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies four direct history/migration implementations across distinct profiles."},"independence":{"status":"PASS","basis":"Direct lane records and implementation contracts are counted; architecture synthesis and Motherclank observer summaries are excluded."},"failure_success_support":{"status":"PASS","basis":"Smartwatch restore gap and Feature Phone total loss are primary failures; ACT-011, KTW migration, and OEM baseline replay are primary recovery evidence."},"observability":{"status":"PASS","basis":"Preserved/lost/restored/epoch/integrity states are explicit in the cited records."},"survivability":{"status":"PARTIAL","basis":"Two restore drills and migration/replay evidence exist, but durable off-host redundancy and complete row-level Motherclank continuity are absent."},"reproducibility":{"status":"PARTIAL","basis":"Raw restore rows and manifests cannot be re-opened or replayed from this workspace."},"profile_stability":{"status":"PASS","basis":"The distinction between preserved, lost, restored, and explicitly unverified state is stable across the represented profiles."},"evidence_boundary":{"status":"PARTIAL","basis":"The required row-level reconciliation and durable-copy proof are materially unavailable."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"UNVERIFIED","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"PARTIALLY_SURVIVES","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; an offline second-lane restore must reconcile preserved/lost rows for identity, observations, events, health, dedupe, feedback, outbox, epoch, and provenance."],
+      "decision_basis":"The package confirms honest loss boundaries and recovery drills but cannot prove durable, row-level history preservation."
+    },
+    {
+      "rule_id": "STD-LIF-001",
+      "current_support_grade": "E3",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "frozen_wishlist_blocker": {"blocking_dimension":"survivability/profile_stability","specific_missing_evidence":"A live profile-transition matrix for one collector and one research or delivery lane, retaining health, capability, continuity, and soak states independently across a restart or restore.","best_candidate_system_source":"Motherclank plus KTW or Smartwatch Clank","why_it_matters":"The frozen snapshot separates dimensions, but current host verification and transition authority remain incomplete.","minimum_sufficient_proof":"A restart/restore trace in which the same lane can be production plus degraded, or capability-limited plus continuous, without collapsing those states, with authoritative transition records.","priority":"P1","blocking_evidence_refs":["MC-LIVE-CLOSEOUT","MC-CAPABILITY-MATRIX","MC-EXPECTATIONS-AUTHORITY"]},
+      "evidence_ids_used":["MC-AQ001-INC-SCHED-GAP","MC-AQ001-SW-RESTORE","MC-AQ001-ACT011-SW-RESTORE","MC-AQ001-LIVE-CLOSEOUT","MC-AQ001-EXPECTATIONS-AUTHORITY","MC-AQ001-CAPABILITY-MATRIX","MC-AQ001-KTW-MIGRATION","MC-AQ001-MISSING-HOST-AUTHORITY-BUNDLE","MC-AQ001-MISSING-DURABLE-REDUNDANCY"],
+      "independent_systems_represented":["Smartwatch Clank","Feature Phone Clank","Korean Tech Wire","OEM Radar","Motherclank observer"],
+      "e4_dimension_audit":{"breadth":{"status":"PASS","basis":"The frozen review identifies four direct lifecycle patterns across collector and specialist profiles."},"independence":{"status":"PASS","basis":"Direct Clank lifecycle patterns are counted; Motherclank snapshots and common architecture laws are not added as implementations."},"failure_success_support":{"status":"PASS","basis":"Scheduler-gap and host-block records provide failure evidence; ACT-011 restore and explicit capability/unknown-state behavior provide success/boundary evidence."},"observability":{"status":"PASS","basis":"Lifecycle, capability, health, continuity, and bounded-debt states are separately represented in the cited records."},"survivability":{"status":"PARTIAL","basis":"Dimension separation survives selected restore/epoch examples, but current host and durable-backup evidence are incomplete."},"reproducibility":{"status":"PARTIAL","basis":"The transition matrix and authoritative live records are not available for repeat inspection."},"profile_stability":{"status":"PARTIAL","basis":"The separation is broad, but a common transition matrix and authoritative transition records are absent."},"evidence_boundary":{"status":"PARTIAL","basis":"The fleet snapshot is partly derived and current verification remains unresolved."}},
+      "survivability_test":{"current_process":"PARTIALLY_SURVIVES","scheduler":"UNVERIFIED","deployment_host":"UNVERIFIED","local_working_directory":"PARTIALLY_SURVIVES","primary_database":"UNVERIFIED","one_volume":"PARTIALLY_SURVIVES","operator_memory":"PARTIALLY_SURVIVES"},
+      "remaining_blockers":["Exact wishlist proof above; one collector plus one research or delivery lane must show authoritative independent health/capability/continuity/soak transitions across restart or restore."],
+      "decision_basis":"The state model is portable and honestly separated, but the live profile-transition proof remains absent."
+    }
+  ],
+  "recommendation_summary": {
+    "PROMOTE_E4": [],
+    "RETAIN_E3": [],
+    "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE": ["STD-EPI-003","STD-PRO-001","STD-RUN-001","STD-RUN-002","STD-HLT-001","STD-BAS-001","STD-HIS-001","STD-LIF-001"],
+    "DOWNGRADE_REVIEW_REQUIRED": [],
+    "ratification_review_justified": false,
+    "ratification_reason": "No rule has all applicable E4 dimensions PASS and no material unresolved primary evidence boundary. No support-grade overlay is prepared or authorized by this acquisition."
+  },
+  "continuity_map": {
+    "path": "standards/MOTHERCLANK_CONTINUITY_MAP_001.md",
+    "role": "DERIVED_NAVIGATION_AID",
+    "independent_evidence": false
+  },
+  "immutability_constraints_observed": [
+    "No rule text changed.",
+    "No maturity or applicability changed.",
+    "No frozen patient audit changed.",
+    "FLEET_EVIDENCE_REGISTER_V0.1 was not edited.",
+    "No support-grade change was applied.",
+    "No Ratification Decision #2 was created.",
+    "No Research Scope/Replay or Event/Delivery acquisition was performed.",
+    "No Motherclank remediation or Standards Clank work was started."
+  ]
+}

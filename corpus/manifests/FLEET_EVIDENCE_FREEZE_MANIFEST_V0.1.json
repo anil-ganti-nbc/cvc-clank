@@ -1,0 +1,26 @@
+{
+  "schema_version": "fleet-evidence-freeze.v0.1",
+  "frozen_at": "2026-08-30",
+  "purpose": "Freeze normalized fleet evidence and learning-loop outputs before audit review.",
+  "mutation_policy": "No source Clank, baseline rule text, or frozen patient audit may be changed by this pass.",
+  "generated_artifacts": [
+    {"path":"standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl","sha256":"D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7"},
+    {"path":"standards/FLEET_SUPPORT_MATRIX_V0.1.json","sha256":"AF53A7818B19D29CE3D3DC29A3619F21AB71080EC2130A164B3114AD1E7D5616"},
+    {"path":"standards/FLEET_LEARNING_LOOP_TEST_V0.1.json","sha256":"1DB16C1C1F71EB584EAD001CD0307A183FDA21683BD71C59F240B7E2B6A41C11"},
+    {"path":"standards/FLEET_EVIDENCE_INGESTION_REPORT_V0.1.md","sha256":"4E023267640715ADB0342B88ED1AB62AC573BD581FAE31775A98CD478C81BF4E"}
+  ],
+  "frozen_patient_inputs": [
+    {"path":"standards/BASELINE_V0.1.md","sha256":"F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F"},
+    {"path":"standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md","sha256":"C62B973F1EF62EDC540D3CCFDFEADB122BDD29E119AB43A4D0F6982A5894B496"},
+    {"path":"standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md","sha256":"2341064C2664CDBAEDC56180EFB824EBAF647D0D80E95DB2DA1B7F92F68FC3BA"}
+  ],
+  "audit_scope": {
+    "register_records": 41,
+    "matrix_rules": 38,
+    "e4_promotions": 0,
+    "e4_approaching_candidates": 18,
+    "learning_loop_result": "PASS",
+    "complete_diagnostic_raw_ledger": false,
+    "motherclank_host_var_row_confirmation": false
+  }
+}

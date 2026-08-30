@@ -1,0 +1,79 @@
+{
+  "schema_version": "cvc-motherclank-continuity-freeze-manifest.v0.1",
+  "manifest_id": "CVC-MOTHERCLANK-CONTINUITY-FREEZE-001",
+  "created_at": "2026-08-30",
+  "acquisition_id": "CVC-MOTHERCLANK-CONTINUITY-001",
+  "status": "FROZEN_ACQUISITION_AND_REVIEW_PACKAGE",
+  "scope_rules": [
+    "STD-EPI-003",
+    "STD-PRO-001",
+    "STD-RUN-001",
+    "STD-RUN-002",
+    "STD-HLT-001",
+    "STD-BAS-001",
+    "STD-HIS-001",
+    "STD-LIF-001"
+  ],
+  "frozen_inputs": [
+    {"path":"standards/BASELINE_V0.1.md","sha256":"F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F","bytes":34434},
+    {"path":"standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md","sha256":"C62B973F1EF62EDC540D3CCFDFEADB122BDD29E119AB43A4D0F6982A5894B496","bytes":18239},
+    {"path":"standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md","sha256":"2341064C2664CDBAEDC56180EFB824EBAF647D0D80E95DB2DA1B7F92F68FC3BA","bytes":21217},
+    {"path":"standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl","sha256":"D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7","bytes":54647},
+    {"path":"standards/FLEET_EVIDENCE_FREEZE_MANIFEST_V0.1.json","sha256":"2AC4CCA367CA64F1B0C53C4398939A3A72F71A835C9AFF91EE98145AA4606666","bytes":1569},
+    {"path":"standards/FLEET_LEARNING_LOOP_TEST_V0.1.json","sha256":"1DB16C1C1F71EB584EAD001CD0307A183FDA21683BD71C59F240B7E2B6A41C11","bytes":5495},
+    {"path":"standards/E4_RATIFICATION_CONTRACT_V0.1.json","sha256":"52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59","bytes":7999},
+    {"path":"standards/E4_REVIEW_PASS_1.jsonl","sha256":"4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0","bytes":28935},
+    {"path":"standards/E4_REVIEW_PASS_1.md","sha256":"3B2BEBBA04558C67FF521B0E0CD4966B32E42C0780850D1031B136578E674BA4","bytes":8001},
+    {"path":"standards/E4_REVIEW_FREEZE_MANIFEST_V0.1.json","sha256":"0B0A1ECD0A10DFAF1A6630FF414C9D5EB891B7DFD95C6DA4B8C8006F4776395A","bytes":1763},
+    {"path":"standards/CVC_RATIFICATION_DECISION_001.json","sha256":"A1C1F67CA40F85348C190B55F1E7D32CD88BDD683653E8190B97860A02C09FE9","bytes":15904},
+    {"path":"standards/CVC_RATIFICATION_LEDGER_V0.1.jsonl","sha256":"83DFB81869650463003D5D41B51002878323380688D92F2D71C6F910B5DE7EE6","bytes":3144},
+    {"path":"standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.jsonl","sha256":"DB08540B54ACFDE18B7DD79E7593CDD7AD57756481BEEFAA14EFD1494A57C1BA","bytes":14858},
+    {"path":"standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.md","sha256":"7E018CC873F4A942471CD3AFF68C7B2A7036477469FF0F2D7CFB8CB7029FFA4F","bytes":7953},
+    {"path":"standards/RATIFICATION_001_FREEZE_MANIFEST.json","sha256":"AF465C2FDA207E33CC2C8D53F7A3F6684F970B8CBE6FF8D81EA7059ED639BBDD","bytes":4003},
+    {"path":"standards/FLEET_SUPPORT_MATRIX_V0.1.json","sha256":"AF53A7818B19D29CE3D3DC29A3619F21AB71080EC2130A164B3114AD1E7D5616","bytes":16567},
+    {"path":"standards/FLEET_SUPPORT_MATRIX_V0.2.json","sha256":"D2F5415210A52FDBC4AF4D230490E5CB178265C79E14C03443C7B908EE1B6F43","bytes":18675},
+    {"path":"standards/DIAGNOSTIC_EVIDENCE_ACQUISITION_001.jsonl","sha256":"1A13AA42D9F50A1741BFAE5DCB1D115B81A9D6C434715BC16F0041E8547606EA","bytes":14123},
+    {"path":"standards/DIAGNOSTIC_EVIDENCE_ACQUISITION_001.md","sha256":"5835B08F9E8653B40E2E6647BB5F5D191DA0B30EE500FA2A6957C1743AC938BB","bytes":9596},
+    {"path":"standards/DIAGNOSTIC_E4_REVIEW_001.json","sha256":"66A691B8DD0D5528DC4D184980F1E23392FDBED9639F0D211BDB00AEBFD4EC33","bytes":10806},
+    {"path":"standards/DIAGNOSTIC_ACQUISITION_001_FREEZE_MANIFEST.json","sha256":"F2C87A4E6CD84332CECABCD9CA561DBD180977DF71272D3C78A5C7B0C5839D2D","bytes":6141}
+  ],
+  "frozen_input_verification": {
+    "algorithm": "SHA-256",
+    "before_output_write": {
+      "checked": true,
+      "observed_all_expected_hashes": true,
+      "note": "Hashes were checked after validating the exact eight-rule wishlist and before writing this manifest."
+    },
+    "after_output_write": {
+      "checked": true,
+      "compared_to_before_output_write": true,
+      "observed_all_expected_hashes_unchanged": true,
+      "note": "Final validation re-computed every frozen-input hash listed above."
+    }
+  },
+  "new_outputs": [
+    {"path":"standards/MOTHERCLANK_CONTINUITY_EVIDENCE_001.jsonl","role":"ADDITIVE_NORMALIZED_EVIDENCE","sha256":"427E54CDFFDD747914C2B399ABAF7022C211D8053AA6012DDF1C3ED478DDEBEE","bytes":38504},
+    {"path":"standards/MOTHERCLANK_CONTINUITY_EVIDENCE_001.md","role":"OPERATOR_REPORT","sha256":"CBD5BA4DDBAF5043812943982EBCBC726795781354F402067849C3DE06A42CA8","bytes":17875},
+    {"path":"standards/MOTHERCLANK_CONTINUITY_MAP_001.md","role":"DERIVED_CONTINUITY_MAP","sha256":"D2688AFC00E6D4BEDB4FDBF3E69C0EF24C0598C16D61162BB793667BBD08E7F0","bytes":3348},
+    {"path":"standards/MOTHERCLANK_E4_REVIEW_001.json","role":"MACHINE_READABLE_E4_REVIEW","sha256":"776B36BF496E2BB9318648D15F231C4EE62327B12531634ED5DE4BBDD730FC4B","bytes":35617}
+  ],
+  "package_integrity": {
+    "jsonl_records_parse": true,
+    "json_review_parse": true,
+    "scope_is_exactly_eight_rules": true,
+    "primary_count": 10,
+    "derived_count": 3,
+    "missing_expected_evidence_count": 4,
+    "executable_conformance_count": 0,
+    "promote_e4_count": 0,
+    "support_grade_changes_applied": false,
+    "frozen_artifacts_byte_identical": true,
+    "frozen_artifact_mutations": [],
+    "raw_external_artifacts_acquired": false,
+    "motherclank_remediated": false,
+    "ratification_decision_002_created": false,
+    "standards_clank_started": false
+  },
+  "stop_state": "STOP_AFTER_ACQUISITION_AND_REVIEW",
+  "self_hash_note": "The manifest is excluded from its own output hash list; all listed frozen inputs and other package outputs are hashed explicitly."
+}

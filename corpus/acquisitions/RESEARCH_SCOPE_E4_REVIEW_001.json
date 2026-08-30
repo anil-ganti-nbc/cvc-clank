@@ -1,0 +1,196 @@
+{
+  "schema_version": "cvc-research-scope-replay-e4-review.v0.1",
+  "review_id": "CVC-RESEARCH-SCOPE-E4-REVIEW-001",
+  "review_date": "2026-08-30",
+  "scope": ["STD-EPI-002", "STD-NEG-001", "STD-SRC-003", "STD-RES-002"],
+  "decision_type": "E4_REEVALUATION_AFTER_TARGETED_ACQUISITION",
+  "support_grade_changes_applied": false,
+  "ratification_created": false,
+  "new_external_evidence_gathered": false,
+  "frozen_contract": {
+    "path": "standards/E4_RATIFICATION_CONTRACT_V0.1.json",
+    "version": "cvc-e4-ratification-contract.v0.1",
+    "sha256": "52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59"
+  },
+  "frozen_wishlist_source": {
+    "path": "standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.jsonl",
+    "sha256": "DB08540B54ACFDE18B7DD79E7593CDD7AD57756481BEEFAA14EFD1494A57C1BA",
+    "records_used": ["STD-EPI-002", "STD-NEG-001", "STD-SRC-003", "STD-RES-002"],
+    "cluster_id": "RESEARCH_SCOPE_AND_REPLAY"
+  },
+  "frozen_pass_1_source": {
+    "path": "standards/E4_REVIEW_PASS_1.jsonl",
+    "sha256": "4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0"
+  },
+  "acquisition_register": {
+    "path": "standards/RESEARCH_SCOPE_REPLAY_EVIDENCE_001.jsonl",
+    "record_count": 21,
+    "role_counts": {
+      "PRIMARY": 11,
+      "DERIVED": 3,
+      "EXECUTABLE_CONFORMANCE": 3,
+      "MISSING_EXPECTED_EVIDENCE": 4
+    }
+  },
+  "corpus_boundary": {
+    "raw_external_bankai_artifacts_available": false,
+    "raw_watch_source_and_hit_artifacts_available": false,
+    "raw_ktw_research_universe_artifacts_available": false,
+    "complete_raw_diagnostic_ledger_available": false,
+    "available_material": "Frozen fleet-register rows, selected raw Story M0.6 investigations, frozen Watch/OEM audits, preserved hashes, normalized incidents, and local executable tests.",
+    "unavailable_material": "Complete BANKAI lead body and denominator, full Watch Notebookcheck hit audit, common source/region manifest, common claim-search plan corpus, and raw linked provider artifacts.",
+    "handling": "No missing incident, row, timestamp, denominator, source outcome, supersession state, or coverage was inferred. Derived summaries remain derived.",
+    "acquisition_mode": "NORMALIZED_FROZEN_CORPUS_AND_OFFLINE_REPLAY_ONLY",
+    "new_provider_contact": false
+  },
+  "independence_and_counting": {
+    "independent_systems_observed": ["Story Clank", "Watch Clank", "OEM Radar / BANKAI", "Korean Tech Wire", "Diagnostic-linked corpus"],
+    "counting_policy": "Count implementation or incident behavior, not evidence records, summaries, reports paired with their source, or CVC normalization.",
+    "shared_ancestry_controls": [
+      "Story report and aggregate summary are not counted separately.",
+      "BANKAI rows and BANKAI synthesis are not counted separately.",
+      "Watch incident, handbook, and audit summary are not counted separately.",
+      "Diagnostic incident and CVC normalization are not counted separately."
+    ],
+    "material_shared_ancestry_caveat": "The accessible evidence is largely normalized from the frozen fleet register and selected linked artifacts; independence is conservatively bounded where raw implementation histories are unavailable."
+  },
+  "replay_summary": {
+    "reproducible": ["SC-AQ001-OFFLINE-PIXEL-REPLAY", "SC-AQ001-LOCAL-RESEARCH-REGRESSIONS"],
+    "partially_reproducible": ["SC-AQ001-STORY-S25-STAGED-SEARCH", "SC-AQ001-WATCH-SCOPE-MATRIX", "SC-AQ001-KTW-HOST-BLOCK"],
+    "not_reproducible": ["SC-AQ001-OEM-BANKAI-I-RECALL", "SC-AQ001-OEM-BANKAI-II-PSREF", "SC-AQ001-OEM-BANKAI-II-REGIONAL", "SC-AQ001-OEM-BANKAI-II-REPLAY"],
+    "provider_contacted": false,
+    "replay_limit": "Selected local Story artifacts and tests replay; the minimum cross-fleet E4 benchmarks do not."
+  },
+  "rule_reviews": [
+    {
+      "rule_id": "STD-EPI-002",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "evidence_boundary/profile_stability",
+        "specific_missing_evidence": "A complete, replayable lead-versus-admitted-evidence benchmark including the BANKAI denominator, source scope, fetch/admissibility outcomes, and final task state.",
+        "best_candidate_system_source": "OEM Radar / BANKAI-II experimental evidence path",
+        "why_it_matters": "The frozen review proves separation mechanics but records an incomplete recall body and denominator, so admission conclusions remain bounded.",
+        "minimum_sufficient_proof": "One frozen benchmark in which every lead has fetch, admissibility, provenance, target-binding, and final-status fields and the run can be replayed without unavailable primary artifacts.",
+        "priority": "P1"
+      },
+      "new_evidence_ids": ["SC-AQ001-STORY-PIXEL-LEAD-EVIDENCE", "SC-AQ001-STORY-S25-STAGED-SEARCH", "SC-AQ001-STORY-S25-NBC-WRONG-RELATION", "SC-AQ001-OEM-BANKAI-I-RECALL", "SC-AQ001-OEM-BANKAI-II-PSREF", "SC-AQ001-OEM-BANKAI-II-REGIONAL", "SC-AQ001-OEM-BANKAI-II-REPLAY", "SC-AQ001-LOCAL-RESEARCH-REGRESSIONS", "SC-AQ001-MISSING-EPI-BANKAI-BENCHMARK"],
+      "independent_systems_represented": ["Story Clank", "OEM Radar / BANKAI"],
+      "dimension_audit": {
+        "breadth": {"status": "PASS", "basis": "Story and OEM provide materially different discovery/admission implementations; Watch and Diagnostic-linked failure evidence is carried conservatively."},
+        "independence": {"status": "PASS", "basis": "Report/summary pairs and CVC normalizations are excluded from independent counts."},
+        "failure_success_support": {"status": "PASS", "basis": "Category-only/non-target lead handling, incomplete BANKAI recall, wrong NBC relation, PSREF review-only isolation, and local separation tests provide both boundary successes and failure evidence."},
+        "observability": {"status": "PASS", "basis": "Selected Story records expose lead, fetch/admission, relation, source class, stage, and task-state fields."},
+        "reproducibility": {"status": "PARTIAL", "basis": "Pixel and local tests replay, but the complete lead-level BANKAI benchmark and primary body are unavailable."},
+        "profile_stability": {"status": "PARTIAL", "basis": "The boundary appears in Story and OEM, but target-binding and admission semantics are not demonstrated by a complete cross-profile benchmark."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The exact frozen BANKAI denominator/body and every-lead accounting remain missing."}
+      },
+      "replay_status": "PARTIALLY_REPRODUCIBLE",
+      "finding": "Discovery pointers are visibly separated from evidence in selected Story/OEM paths, but the preserved S25 relation error and incomplete BANKAI benchmark prevent E4.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum proof: a complete replayable BANKAI lead-versus-admitted-evidence benchmark with denominator, source scope, fetch/admissibility, provenance, target binding, and final task state for every lead."
+    },
+    {
+      "rule_id": "STD-NEG-001",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "evidence_boundary/profile_stability",
+        "specific_missing_evidence": "A complete bounded-negative research case with exact scope, query stages, budget, fetch outcomes, stopping reason, and an independent hit audit.",
+        "best_candidate_system_source": "OEM BANKAI-II or Watch Notebookcheck Hall of Shame",
+        "why_it_matters": "The frozen review records bounded-negative discipline but the BANKAI denominator and Notebookcheck outcome list are incomplete.",
+        "minimum_sufficient_proof": "One replayable negative benchmark whose scope, budget, all attempted stages, admitted evidence, unresolved gaps, and final bounded-negative wording are preserved together.",
+        "priority": "P1"
+      },
+      "new_evidence_ids": ["SC-AQ001-STORY-PIXEL-BOUNDED-NEGATIVE", "SC-AQ001-STORY-S25-NBC-WRONG-RELATION", "SC-AQ001-OEM-BANKAI-I-RECALL", "SC-AQ001-OEM-BANKAI-II-REGIONAL", "SC-AQ001-OEM-BANKAI-II-REPLAY", "SC-AQ001-DIA-DB-007", "SC-AQ001-KTW-HOST-BLOCK", "SC-AQ001-DIA-REPORT-CORPUS", "SC-AQ001-WATCH-SCOPE-MATRIX", "SC-AQ001-OEM-DESCRIPTOR-AUDIT", "SC-AQ001-OFFLINE-PIXEL-REPLAY", "SC-AQ001-LOCAL-RESEARCH-REGRESSIONS", "SC-AQ001-MISSING-NEG-BOUNDARY-BENCHMARK"],
+      "independent_systems_represented": ["Story Clank", "Watch Clank", "OEM Radar / BANKAI", "Korean Tech Wire", "Diagnostic-linked corpus"],
+      "dimension_audit": {
+        "breadth": {"status": "PASS", "basis": "Bounded unknown, blocked, region-gap, incomplete-denominator, and local replay behaviors occur across several profiles."},
+        "independence": {"status": "PASS", "basis": "Shared summaries and normalized duplicates are not counted independently."},
+        "failure_success_support": {"status": "PASS", "basis": "Provider block, incomplete recall, region/source gaps, unknown preservation, and successful Pixel bounded replay provide complementary evidence."},
+        "observability": {"status": "PASS", "basis": "Scope, stages, diagnostics, budget-related stopping, provider outcomes, and bounded states are visible in selected artifacts."},
+        "reproducibility": {"status": "PARTIAL", "basis": "Pixel replay and local tests reproduce selected behavior, but the complete independent-hit benchmark is unavailable."},
+        "profile_stability": {"status": "PARTIAL", "basis": "The bounded-negative principle travels, but denominators, independent hit audits, and source-coverage semantics are not common and complete."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The frozen minimum proof requires a complete negative benchmark that the accessible corpus does not contain."}
+      },
+      "replay_status": "PARTIALLY_REPRODUCIBLE",
+      "finding": "The corpus generally preserves bounded negatives rather than broad absence claims, but incomplete denominators and missing independent hit audit leave a material E4 boundary.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum proof: one replayable bounded-negative benchmark preserving scope, budget, every attempted stage, admitted evidence, unresolved gaps, final wording, and an independent hit audit."
+    },
+    {
+      "rule_id": "STD-SRC-003",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "profile_stability/evidence_boundary",
+        "specific_missing_evidence": "A machine-readable source, region, family, and exclusion manifest tied to a replayable source-coverage run and explicit discovery-only permissions.",
+        "best_candidate_system_source": "OEM Radar and Watch source matrices",
+        "why_it_matters": "Source-universe declarations exist, but category, region, and permission semantics are not normalized into one replayable contract.",
+        "minimum_sufficient_proof": "A versioned manifest plus one run that records every in-scope and excluded source, region/category rationale, discovery-only limitation, and resulting coverage gap.",
+        "priority": "P1"
+      },
+      "new_evidence_ids": ["SC-AQ001-OEM-BANKAI-I-RECALL", "SC-AQ001-OEM-BANKAI-II-PSREF", "SC-AQ001-OEM-BANKAI-II-REGIONAL", "SC-AQ001-OEM-BANKAI-II-REPLAY", "SC-AQ001-DIA-DB-003", "SC-AQ001-DIA-DB-007", "SC-AQ001-KTW-HOST-BLOCK", "SC-AQ001-WATCH-SCOPE-MATRIX", "SC-AQ001-OEM-DESCRIPTOR-AUDIT", "SC-AQ001-MISSING-SOURCE-REGION-MANIFEST"],
+      "independent_systems_represented": ["Watch Clank", "OEM Radar / BANKAI", "Story Clank", "Korean Tech Wire", "Diagnostic-linked corpus"],
+      "dimension_audit": {
+        "breadth": {"status": "PASS", "basis": "Watch, OEM, Story, KTW, and Diagnostic-linked source/failure records expose different source-scope behaviors."},
+        "independence": {"status": "PASS", "basis": "Source matrices and their audit summaries are not multiplied; implementation families are counted conservatively."},
+        "failure_success_support": {"status": "PASS", "basis": "Declared source layers and OEM configured descriptors provide positive structure; regional/source gaps and host blocking provide failure boundaries."},
+        "observability": {"status": "PASS", "basis": "Authority tiers, freshness/permissions, enabled sources, cadence, manufacturer scope, regional gaps, and blocked surfaces are observable in preserved artifacts."},
+        "reproducibility": {"status": "PARTIAL", "basis": "Frozen declarations and summaries resolve, but no common raw manifest plus coverage run is available for replay."},
+        "profile_stability": {"status": "PARTIAL", "basis": "Declarations differ materially by profile and do not share normalized category, region, tier, exclusion, or discovery-only semantics."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The exact versioned machine-readable manifest and tied replayable coverage run are missing."}
+      },
+      "replay_status": "PARTIALLY_REPRODUCIBLE",
+      "finding": "Several Clanks declare useful portions of their source universe, but no common versioned source/region/family/exclusion contract tied to a replayable run is present.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum proof: a versioned machine-readable manifest and one run recording every in-scope/excluded source, region/category rationale, discovery-only limitation, and resulting coverage gap."
+    },
+    {
+      "rule_id": "STD-RES-002",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "profile_stability/evidence_boundary",
+        "specific_missing_evidence": "A replayable claim-scoped search-plan corpus recording aliases, localized terms, stage purpose, provider, stopping reason, admission result, and bounded gaps.",
+        "best_candidate_system_source": "Story Clank research runner plus OEM BANKAI path",
+        "why_it_matters": "Staged planning is evidenced in Story and OEM, but there is no common run schema and recall boundaries remain unresolved.",
+        "minimum_sufficient_proof": "One plan and replay pair that produces the same stage/status accounting, preserves aliases and localization, and distinguishes no-hit, blocked, unadmitted, and unresolved outcomes.",
+        "priority": "P1"
+      },
+      "new_evidence_ids": ["SC-AQ001-STORY-S25-STAGED-SEARCH", "SC-AQ001-STORY-PIXEL-BOUNDED-NEGATIVE", "SC-AQ001-STORY-S25-NBC-WRONG-RELATION", "SC-AQ001-OEM-BANKAI-I-RECALL", "SC-AQ001-OEM-BANKAI-II-PSREF", "SC-AQ001-OEM-BANKAI-II-REGIONAL", "SC-AQ001-OEM-BANKAI-II-REPLAY", "SC-AQ001-DIA-DB-007", "SC-AQ001-WATCH-SCOPE-MATRIX", "SC-AQ001-OEM-DESCRIPTOR-AUDIT", "SC-AQ001-OFFLINE-PIXEL-REPLAY", "SC-AQ001-LOCAL-RESEARCH-REGRESSIONS", "SC-AQ001-MISSING-CLAIM-SEARCH-PLAN-CORPUS"],
+      "independent_systems_represented": ["Story Clank", "OEM Radar / BANKAI", "Watch Clank"],
+      "dimension_audit": {
+        "breadth": {"status": "PASS", "basis": "Story provides a research runner; OEM provides source-specific staged discovery and Watch provides staged source expansion, with different profile boundaries."},
+        "independence": {"status": "PASS", "basis": "Repeated Story fixtures and OEM summaries are not multiplied as independent plan corpora."},
+        "failure_success_support": {"status": "PASS", "basis": "Story exact/relaxed/alias/claim/fallback stages and OEM bounded source paths are positive; wrong NBC relation, incomplete recall, and regional/source gaps are failure evidence."},
+        "observability": {"status": "PARTIAL", "basis": "Story exposes detailed stage diagnostics; OEM and Watch expose different source expansion controls, but no common provider/admission/stopping schema exists."},
+        "reproducibility": {"status": "PARTIAL", "basis": "Pixel offline replay and local tests pass, but the required cross-system plan/replay pair is not available."},
+        "profile_stability": {"status": "PARTIAL", "basis": "Aliases and stages are visible in Story, while OEM/Watch use different operational lanes; portable semantics remain unproven."},
+        "evidence_boundary": {"status": "MATERIAL_OPEN", "basis": "The frozen common claim-scoped corpus and clean admission/result accounting are missing."}
+      },
+      "replay_status": "PARTIALLY_REPRODUCIBLE",
+      "finding": "Staged and claim-specific search is observable and locally replayable in Story, but there is no common replayable corpus and the preserved wrong relation shows that stages do not guarantee safe outcomes.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum proof: one plan/replay pair preserving aliases and localization, producing identical stage/status accounting, and distinguishing no-hit, blocked, unadmitted, and unresolved outcomes."
+    }
+  ],
+  "recommendation_summary": {
+    "PROMOTE_E4": [],
+    "RETAIN_E3": [],
+    "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE": ["STD-EPI-002", "STD-NEG-001", "STD-SRC-003", "STD-RES-002"],
+    "DOWNGRADE_REVIEW_REQUIRED": [],
+    "ratification_decision_002_justified": false,
+    "ratification_reason": "None of the four rules satisfies the frozen E4 minimum proof without a material unresolved primary evidence boundary."
+  },
+  "integrity": {
+    "frozen_inputs_verified_before_write": true,
+    "frozen_inputs_verified_after_write": true,
+    "existing_artifacts_changed": false,
+    "prior_evidence_registers_changed": false,
+    "support_matrices_modified": false,
+    "support_grade_changes_applied": false,
+    "rule_text_changed": false,
+    "rule_maturity_changed": false,
+    "motherclank_or_event_delivery_evidence_acquired": false,
+    "conformance_audit_started": false,
+    "ratification_decision_002_created": false,
+    "standards_clank_started": false
+  }
+}

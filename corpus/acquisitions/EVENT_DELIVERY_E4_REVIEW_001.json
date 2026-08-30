@@ -1,0 +1,159 @@
+{
+  "schema_version": "cvc-event-delivery-e4-review.v0.1",
+  "acquisition_id": "CVC-EVENT-DELIVERY-001",
+  "review_date": "2026-08-30",
+  "scope": ["STD-EVT-001", "STD-DEL-002"],
+  "decision_type": "E4_REEVALUATION_AFTER_TARGETED_ACQUISITION",
+  "support_grade_changes_applied": false,
+  "ratification_created": false,
+  "new_external_evidence_gathered": false,
+  "frozen_contract": {
+    "path": "standards/E4_RATIFICATION_CONTRACT_V0.1.json",
+    "version": "cvc-e4-ratification-contract.v0.1",
+    "sha256": "52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59"
+  },
+  "frozen_wishlist_source": {
+    "path": "standards/E3_SPECIFIC_EVIDENCE_WISHLIST_V0.1.jsonl",
+    "sha256": "DB08540B54ACFDE18B7DD79E7593CDD7AD57756481BEEFAA14EFD1494A57C1BA",
+    "records_used": ["STD-EVT-001", "STD-DEL-002"],
+    "cluster_id": "SECOND_EVENT_DELIVERY_IMPLEMENTATION"
+  },
+  "frozen_prior_acquisition_sources": [
+    {"path":"standards/DIAGNOSTIC_E4_REVIEW_001.json","sha256":"66A691B8DD0D5528DC4D184980F1E23392FDBED9639F0D211BDB00AEBFD4EC33"},
+    {"path":"standards/MOTHERCLANK_E4_REVIEW_001.json","sha256":"776B36BF496E2BB9318648D15F231C4EE62327B12531634ED5DE4BBDD730FC4B"},
+    {"path":"standards/RESEARCH_SCOPE_E4_REVIEW_001.json","sha256":"4A28B6B7B8E193D966D3B137D83ABFACEE6890A77D79154725D2A398456C3992"}
+  ],
+  "acquisition_register": {
+    "path": "standards/EVENT_DELIVERY_EVIDENCE_001.jsonl",
+    "record_count": 18,
+    "role_counts": {"PRIMARY":12,"DERIVED":3,"EXECUTABLE_CONFORMANCE":1,"MISSING_EXPECTED_EVIDENCE":2}
+  },
+  "corpus_boundary": {
+    "raw_watch_repository_available": false,
+    "raw_oem_repository_available": false,
+    "raw_oem_delivery_test_artifact_available": false,
+    "raw_non_oem_delivery_trace_available": false,
+    "available_material": "Frozen Watch/OEM audits, normalized fleet-register rows, selected Story implementation/tests, and prior frozen CVC packages.",
+    "unavailable_material": "Second non-OEM collector event replay, second independent durable delivery trace, raw OEM outbox rows/test file, and complete restart/second-read delivery artifacts.",
+    "handling": "No missing event, attempt, acknowledgement, restart read, or delivery timestamp was inferred.",
+    "acquisition_mode": "NORMALIZED_FROZEN_CORPUS_AND_OFFLINE_TESTS_ONLY",
+    "new_provider_or_transport_contact": false
+  },
+  "independence_and_counting": {
+    "systems_observed": ["Story Clank","Watch Clank","OEM Radar","Korean Tech Wire","Motherclank derived corpus"],
+    "independent_implementation_families_for_event_rule": ["Story Clank","Watch Clank","OEM Radar"],
+    "independent_delivery_implementation_families": ["OEM Radar"],
+    "shared_ancestry_controls": [
+      "OEM baseline, cutover, noise, Diagnostic, and replay records share OEM implementation ancestry.",
+      "Motherclank GIC, capability, and fleet synthesis records are derived and not implementations.",
+      "Story source and its tests are one implementation family, not two."
+    ],
+    "classification_by_system": {
+      "Story Clank": "INDEPENDENT",
+      "Watch Clank": "INDEPENDENT",
+      "OEM Radar": "INDEPENDENT",
+      "Korean Tech Wire": "INDEPENDENT",
+      "OEM historical subrecords": "PARTIALLY_SHARED",
+      "Motherclank/fleet summaries": "DERIVED_DOCUMENTATION_ONLY"
+    }
+  },
+  "executable_conformance": {
+    "status": "PARTIAL",
+    "environment": "PYTHONPATH=src; offline fixture-only pytest; no providers or transports contacted",
+    "test_count": 8,
+    "passed": 8,
+    "failed": 0,
+    "event_invariant_directly_exercised": true,
+    "delivery_invariant_directly_exercised": false,
+    "missing_referenced_test": "OEM test_discord.py named by frozen audit but unavailable in workspace"
+  },
+  "rule_reviews": [
+    {
+      "rule_id": "STD-EVT-001",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "profile_stability/survivability",
+        "specific_missing_evidence": "A second independent non-OEM collector with durable observation, classification, and event records plus a replay proving that page presence is not promoted to a product event.",
+        "best_candidate_system_source": "Feature Phone Clank or Watch Clank",
+        "why_it_matters": "OEM supplies the strongest positive event-layer evidence; equivalent event-layer persistence is not live-confirmed across another implementation.",
+        "minimum_sufficient_proof": "A replay with observation, classification, and event IDs, explicit event criteria, and a negative page-presence case that remains non-event after restart or reinspection.",
+        "priority": "P1"
+      },
+      "evidence_ids": ["ED-AQ001-STORY-LAYER-MODEL","ED-AQ001-WATCH-LAYER-SEPARATION","ED-AQ001-OEM-LAYER-SEPARATION","ED-AQ001-OEM-BASELINE-MIGRATION","ED-AQ001-OEM-PHASE10-CUTOVER","ED-AQ001-OEM-NOTIFICATION-NOISE","ED-AQ001-DIA-DB-002","ED-AQ001-STORY-EVENT-CONFORMANCE","ED-AQ001-MISSING-EVT-SECOND-COLLECTOR"],
+      "independent_systems_represented": ["Story Clank","Watch Clank","OEM Radar"],
+      "failure_evidence": ["ED-AQ001-DIA-DB-002","ED-AQ001-OEM-NOTIFICATION-NOISE"],
+      "success_evidence": ["ED-AQ001-STORY-LAYER-MODEL","ED-AQ001-WATCH-LAYER-SEPARATION","ED-AQ001-OEM-LAYER-SEPARATION","ED-AQ001-STORY-EVENT-CONFORMANCE"],
+      "survivability": {"status":"PARTIAL","basis":"Story tests are in-memory/offline; Watch live DB was empty; OEM historical persistence/migration evidence exists but raw non-OEM restart replay is missing."},
+      "dimension_audit": {
+        "breadth": {"status":"PASS","basis":"Story, Watch, and OEM independently expose observation/classification/event distinctions."},
+        "independence": {"status":"PASS","basis":"Three implementation families are represented; OEM subrecords and derived summaries are not multiplied."},
+        "failure_success_support": {"status":"PASS","basis":"OEM baseline pollution supplies failure evidence; Story/Watch/OEM layer models and tests supply successful separation."},
+        "observability": {"status":"PASS","basis":"The relevant objects, relations, event criteria, and non-event outcomes are observable in preserved models, audits, and tests."},
+        "survivability": {"status":"PARTIAL","basis":"Durable persistence/restart proof is not available for a second non-OEM collector."},
+        "reproducibility": {"status":"PARTIAL","basis":"Story event tests replay locally, but the frozen minimum second-collector replay is unavailable."},
+        "profile_stability": {"status":"PARTIAL","basis":"The boundary travels across Story, Watch, and OEM, but a non-OEM collector replay with the exact minimum fields is absent."},
+        "evidence_boundary": {"status":"MATERIAL_OPEN","basis":"The exact frozen second independent non-OEM collector proof is missing."}
+      },
+      "replay_status": "PARTIALLY_REPRODUCIBLE",
+      "finding": "Observation, classification, and event are separate in three implementations and the failure cost of collapsing them is preserved, but the required non-OEM durable collector replay remains unavailable.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum sufficient proof: a second independent non-OEM collector replay with observation, classification, and event IDs, explicit event criteria, and a page-presence negative that remains non-event after restart or reinspection."
+    },
+    {
+      "rule_id": "STD-DEL-002",
+      "current_support_grade": "E3",
+      "frozen_wishlist_blocker": {
+        "blocking_dimension": "survivability/profile_stability",
+        "specific_missing_evidence": "One independent delivery-enabled Clank with a durable event/outbox/attempt/ack trace proving that delivery failure cannot mutate event truth.",
+        "best_candidate_system_source": "Feature Phone or Smartphone Clank",
+        "why_it_matters": "Positive delivery-separation evidence is concentrated in OEM; other lanes are primarily capability or policy records.",
+        "minimum_sufficient_proof": "An injected delivery failure where the event remains immutable, the outbox/attempt/ack lineage records the failure, and a second read observes unchanged event truth.",
+        "priority": "P1"
+      },
+      "evidence_ids": ["ED-AQ001-OEM-OUTBOX-TRACE","ED-AQ001-WATCH-DELIVERY-FAILURE","ED-AQ001-OEM-BASELINE-MIGRATION","ED-AQ001-OEM-PHASE10-CUTOVER","ED-AQ001-OEM-NOTIFICATION-NOISE","ED-AQ001-DIA-DB-005","ED-AQ001-OEM-BANKAI-II-REPLAY","ED-AQ001-KTW-POLICY-BOUNDARY","ED-AQ001-MC-CAPABILITY","ED-AQ001-MISSING-DEL-SECOND-IMPLEMENTATION"],
+      "independent_systems_represented": ["OEM Radar","Watch Clank"],
+      "failure_evidence": ["ED-AQ001-WATCH-DELIVERY-FAILURE","ED-AQ001-OEM-NOTIFICATION-NOISE","ED-AQ001-DIA-DB-005"],
+      "success_evidence": ["ED-AQ001-OEM-OUTBOX-TRACE","ED-AQ001-OEM-BASELINE-MIGRATION","ED-AQ001-OEM-PHASE10-CUTOVER"],
+      "survivability": {"status":"PARTIAL","basis":"OEM durable outbox and historical migration/cutover/replay records exist; the required independent injected-failure second read is absent. Watch failure protection is not durable outbox evidence."},
+      "dimension_audit": {
+        "breadth": {"status":"PASS","basis":"OEM and Watch have materially different delivery behaviors; KTW supplies a policy boundary."},
+        "independence": {"status":"PARTIAL","basis":"Only OEM supplies a durable outbox/attempt/ack implementation; Watch is direct-send/scattered state, not an equivalent second implementation."},
+        "failure_success_support": {"status":"PASS","basis":"OEM outbox success and migration/cutover separation coexist with Watch direct-send and dual-host/noise failure evidence."},
+        "observability": {"status":"PARTIAL","basis":"OEM event IDs, outbox, attempts, transport result, and states are recorded by the frozen audit; raw delivery rows and second implementation are unavailable."},
+        "survivability": {"status":"PARTIAL","basis":"OEM historical persistence is positive but does not satisfy the independent injected-failure/second-read proof."},
+        "reproducibility": {"status":"PARTIAL","basis":"The referenced OEM delivery test is unavailable; no second delivery implementation can be replayed locally."},
+        "profile_stability": {"status":"PARTIAL","basis":"Delivery is not applicable to Story/KTW and Watch uses a materially weaker path; portable durable semantics remain unproven."},
+        "evidence_boundary": {"status":"MATERIAL_OPEN","basis":"The exact frozen independent non-OEM durable event/outbox/attempt/ack trace is missing."}
+      },
+      "replay_status": "NOT_REPRODUCIBLE",
+      "finding": "OEM proves the intended event/outbox separation and Watch proves a limited event-preserving send-failure boundary, but no second independent durable delivery implementation is accessible.",
+      "recommendation": "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE",
+      "remaining_evidence_request": "The exact frozen minimum sufficient proof: an independent delivery-enabled Clank with injected delivery failure, immutable event, durable outbox/attempt/ack failure lineage, and a second read observing unchanged event truth."
+    }
+  ],
+  "recommendation_summary": {
+    "PROMOTE_E4": [],
+    "RETAIN_E3": [],
+    "RETAIN_E3_NEEDS_SPECIFIC_EVIDENCE": ["STD-EVT-001","STD-DEL-002"],
+    "DOWNGRADE_REVIEW_REQUIRED": [],
+    "ratification_decision_002_justified": false,
+    "ratification_reason": "STD-EVT-001 lacks the exact non-OEM durable collector replay, and STD-DEL-002 has only one accessible durable delivery implementation."
+  },
+  "integrity": {
+    "frozen_inputs_verified_before_write": true,
+    "frozen_inputs_verified_after_write": true,
+    "existing_artifacts_changed": false,
+    "prior_acquisition_packages_changed": false,
+    "support_matrices_modified": false,
+    "support_grade_changes_applied": false,
+    "rule_text_changed": false,
+    "rule_maturity_changed": false,
+    "new_evidence_outside_scope": false,
+    "new_source_or_transport_contact": false,
+    "live_discord_test_performed": false,
+    "ratification_decision_002_created": false,
+    "new_acquisition_cluster_started": false,
+    "remediation_started": false,
+    "standards_clank_started": false
+  }
+}

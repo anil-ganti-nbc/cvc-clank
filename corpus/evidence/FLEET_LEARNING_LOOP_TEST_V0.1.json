@@ -1,0 +1,118 @@
+{
+  "schema_version": "fleet-learning-loop.v0.1",
+  "loop_id": "CVC-LL-001",
+  "executed_at": "2026-08-30",
+  "status": "COMPLETED_REVIEW_REQUIRED",
+  "incident": {
+    "evidence_id": "MC-INC-20260823-SW-RESTORE",
+    "source_system": "smartwatch-clank",
+    "historical_verdict": "RECORDED_OPERATOR_VERIFIED_PARTIAL_ARTIFACT_CONFIRMATION",
+    "historical_verdict_preserved": true,
+    "historical_claims_preserved": [
+      "Smartwatch live volume was destroyed",
+      "history was restored from the 2026-08-18 backup",
+      "approximately 2026-08-18T20:13Z to 2026-08-22T10:00Z is a known observation gap",
+      "restored lineage is not a new epoch"
+    ],
+    "source_refs": [
+      "C:\\Users\\anil\\Documents\\Default Project\\motherclank\\continuity\\seeds\\INC-20260823-volume-loss.jsonl#smartwatch records",
+      "C:\\Users\\anil\\Documents\\Default Project\\clank-architecture\\audits\\INCIDENT_IMPACT_MAP_2026-08-23.md#timeline-and-states-B-D"
+    ]
+  },
+  "lesson": "Restored history is not a new epoch and is not an organic product disappearance; continuity gap, restored epoch, health, and liveness remain separate.",
+  "candidate_invariant": {
+    "text": "A restore event must preserve the prior history lineage, represent the bounded missing interval explicitly, and prevent continuity loss from being interpreted as organic disappearance or new product novelty. Health and execution liveness remain independent dimensions.",
+    "rule_ids": [
+      "STD-HIS-001",
+      "STD-BAS-001",
+      "STD-EPI-001",
+      "STD-EPI-003",
+      "STD-CLS-001",
+      "STD-RUN-002",
+      "STD-HLT-001",
+      "STD-NEG-001",
+      "STD-DIA-001"
+    ]
+  },
+  "cross_clank_evidence": [
+    {
+      "evidence_id": "MC-INC-20260823-FPC-EPOCH",
+      "role": "contrasting_continuity_case",
+      "result": "total loss is an explicit NEW_EPOCH, not a restore"
+    },
+    {
+      "evidence_id": "MC-ACT011-SW-RESTORE",
+      "role": "successful_restore_pattern",
+      "result": "integrity and isolated restore verified; durable off-host gate remained open"
+    },
+    {
+      "evidence_id": "MC-ACT011-FPC-RESTORE",
+      "role": "independent_lane_restore_pattern",
+      "result": "current epoch restore verified without reconstructing lost prior history"
+    },
+    {
+      "evidence_id": "OEM-V2-BASELINE-MIGRATION",
+      "role": "independent_baseline_preservation_pattern",
+      "result": "identity/snapshot import was idempotent and re-sighting stayed flood-free"
+    },
+    {
+      "evidence_id": "MC-GIC-001-025",
+      "role": "machine_corpus",
+      "result": "restore lineage, new epoch, zero semantics, liveness, and continuity are executable corpus dimensions"
+    }
+  ],
+  "conformance_check": {
+    "check_id": "CVC-CONF-RESTORE-001",
+    "command": "PYTHONPATH=src python -m pytest -q --disable-warnings tests/test_golden_db_loss.py::test_db_loss_restore_no_organic_transition_invention tests/test_golden_db_loss.py::test_health_and_continuity_stay_separate_after_restore tests/test_adapter_contract_v02.py::test_three_dimensions_survive_every_combination",
+    "test_files": [
+      {
+        "path": "C:\\Users\\anil\\Documents\\Default Project\\motherclank\\tests\\test_golden_db_loss.py",
+        "sha256": "BEF45E540816333FE8FA73D21D446325810E51CE6E15F560F00AFEE5592226D3"
+      },
+      {
+        "path": "C:\\Users\\anil\\Documents\\Default Project\\motherclank\\tests\\test_golden_incidents_g1_g8.py",
+        "sha256": "39ED6530B26F7430E6E8FD19072B23EACBB5D3EE26B77C30973C390283CBC196"
+      },
+      {
+        "path": "C:\\Users\\anil\\Documents\\Default Project\\motherclank\\tests\\test_adapter_contract_v02.py",
+        "sha256": "E54B28C0B6CB4DA5E55886A8896CFD8623772A6825C112691A026061288040D4"
+      }
+    ],
+    "expected": {
+      "restore_keeps_lineage": true,
+      "known_gap_is_explicit": true,
+      "organic_transition_invention_forbidden": true,
+      "health_and_continuity_are_orthogonal": true,
+      "historical_verdict_rewritten": false
+    },
+    "observed": {
+      "pytest_result": "122 passed, 1 warning in 0.15s",
+      "restore_keeps_lineage": true,
+      "known_gap_is_explicit": true,
+      "organic_transition_invention_forbidden": true,
+      "health_and_continuity_are_orthogonal": true,
+      "historical_verdict_rewritten": false,
+      "result": "PASS"
+    },
+    "warning": "Pytest emitted one non-product environment/cache warning; no product assertion failed."
+  },
+  "candidate_baseline_revision": {
+    "status": "PROPOSAL_ONLY",
+    "proposed_version": "baseline-v0.1-learning-loop-001",
+    "change_type": "evidence_and_conformance_linkage",
+    "proposed_effect": "Attach the restore-vs-new-epoch invariant, the preserved historical verdict, cross-Clank evidence IDs, and the executable conformance check to the affected rules.",
+    "rule_text_changed": false,
+    "existing_baseline_modified": false,
+    "review_required": true,
+    "remaining_blockers": [
+      "complete Diagnostic raw incident/lesson ledger is still unavailable",
+      "Motherclank host var artifacts still require row-level confirmation",
+      "durable off-host redundancy remains unproven for the ACT-011 lanes"
+    ]
+  },
+  "provenance": {
+    "incident_record": "standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl#MC-INC-20260823-SW-RESTORE",
+    "register_sha256_at_creation": "D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7",
+    "historical_source_sha256": "909A6F9FFD814ED3056DB6F91A914116A3B54E268A9200107D7180C46E18EF85"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "schema_version": "cvc-ratification-decision.v0.1",
+  "ratification_id": "CVC-RAT-001",
+  "decision_date": "2026-08-30",
+  "decision": "RATIFIED_E4",
+  "decision_vocabulary": ["RATIFIED_E4", "REJECTED_E4", "DEFERRED_E4"],
+  "scope": ["STD-EPI-001", "STD-STD-002"],
+  "governance_effect": "Support-grade governance decision only.",
+  "operator_review_required": true,
+  "prohibited_effects": [
+    "Rule maturity is unchanged.",
+    "Rule text is unchanged.",
+    "Normative level and applicability are unchanged.",
+    "The frozen baseline and prior reviews are unchanged.",
+    "No Clank remediation is authorized or performed.",
+    "No new evidence was gathered.",
+    "Standards Clank is not started.",
+    "STANDARD_V0.1 is not frozen."
+  ],
+  "e4_contract": {
+    "version": "cvc-e4-ratification-contract.v0.1",
+    "path": "standards/E4_RATIFICATION_CONTRACT_V0.1.json",
+    "sha256": "52410DFDACBB65980E5C11AAD823A95BBD51729231CAAF3191216F76334C5E59",
+    "status_at_review": "PROPOSAL_FOR_RATIFICATION",
+    "interpretation": "The unchanged contract was applied as recorded in E4_REVIEW_PASS_1; no dimension, threshold, or ancestry rule was reinterpreted."
+  },
+  "historical_review": {
+    "path": "standards/E4_REVIEW_PASS_1.jsonl",
+    "sha256": "4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0",
+    "recorded_recommendations": {
+      "STD-EPI-001": "PROMOTE_E4",
+      "STD-STD-002": "PROMOTE_E4"
+    },
+    "historical_record_is_preserved": true
+  },
+  "frozen_input_integrity": {
+    "baseline": {
+      "path": "standards/BASELINE_V0.1.md",
+      "sha256": "F3FBFB0098193120DD3F9ADA83C65EC7952B9A2EB5483C78267CF2A8E170169F"
+    },
+    "watch_patient_1": {
+      "path": "standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md",
+      "sha256": "C62B973F1EF62EDC540D3CCFDFEADB122BDD29E119AB43A4D0F6982A5894B496"
+    },
+    "oem_patient_2": {
+      "path": "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md",
+      "sha256": "2341064C2664CDBAEDC56180EFB824EBAF647D0D80E95DB2DA1B7F92F68FC3BA"
+    },
+    "fleet_evidence_register": {
+      "path": "standards/FLEET_EVIDENCE_REGISTER_V0.1.jsonl",
+      "sha256": "D9CB8B972C667385C1B234DD6891B5C3F34E29268597EB2321851AC909FB5FC7"
+    },
+    "fleet_learning_loop": {
+      "path": "standards/FLEET_LEARNING_LOOP_TEST_V0.1.json",
+      "sha256": "1DB16C1C1F71EB584EAD001CD0307A183FDA21683BD71C59F240B7E2B6A41C11"
+    },
+    "frozen_pass_1_markdown": {
+      "path": "standards/E4_REVIEW_PASS_1.md",
+      "sha256": "3B2BEBBA04558C67FF521B0E0CD4966B32E42C0780850D1031B136578E674BA4"
+    },
+    "support_matrix_base": {
+      "path": "standards/FLEET_SUPPORT_MATRIX_V0.1.json",
+      "sha256": "AF53A7818B19D29CE3D3DC29A3619F21AB71080EC2130A164B3114AD1E7D5616"
+    }
+  },
+  "decisions": [
+    {
+      "ratification_id": "CVC-RAT-001-EPI-001",
+      "rule_id": "STD-EPI-001",
+      "historical_recommendation": {
+        "decision": "PROMOTE_E4",
+        "source": "standards/E4_REVIEW_PASS_1.jsonl#STD-EPI-001",
+        "source_sha256": "4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0"
+      },
+      "final_ratification": {
+        "previous_support_grade": "E3",
+        "recommended_support_grade": "E4",
+        "decision": "RATIFIED_E4",
+        "operator_review_required": true
+      },
+      "rule_text_hash": {
+        "algorithm": "SHA-256",
+        "canonicalization": "Exact rule text from BASELINE_V0.1, UTF-8, surrounding whitespace trimmed, no trailing newline.",
+        "sha256": "716A2CC8B7058F067CA3F9E03FFA190D82752A82C1B00224831D42CE4F67AF04"
+      },
+      "baseline_properties_preserved": {
+        "baseline_version": "BASELINE_V0.1",
+        "normative_level": "MUST",
+        "maturity": "PROVISIONAL",
+        "applicability": "CORE",
+        "rule_text_changed": false
+      },
+      "e4_recheck": {
+        "required_dimensions": [
+          "breadth",
+          "independence",
+          "failure_success_support",
+          "observability",
+          "survivability",
+          "reproducibility",
+          "profile_stability"
+        ],
+        "dimension_results": {
+          "breadth": {
+            "status": "PASS",
+            "evidence_records": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH", "OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE"],
+            "basis": "Five participant systems are listed in the frozen review and exercise the same observation-versus-novelty boundary across collector, research, migration, and baseline profiles."
+          },
+          "independence": {
+            "status": "PASS",
+            "independent_systems": ["Story Clank", "Watch Clank", "OEM Radar", "Smartwatch Clank", "Feature Phone Clank"],
+            "independent_implementation_count": 5,
+            "basis": "The frozen review counts five participant implementations and excludes Motherclank summaries, Fleet Laws, and duplicated corpus indexes."
+          },
+          "failure_success_support": {
+            "status": "PASS",
+            "failure_evidence": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH"],
+            "success_evidence": ["OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE", "MC-GIC-001-025"],
+            "basis": "The frozen review preserves repeated metadata/observation-versus-novelty failures and successful baseline, epoch, and event-separation behavior. MC-GIC-001-025 remains a derived index for independence purposes."
+          },
+          "observability": {
+            "status": "PASS",
+            "evidence_records": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH", "OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE"],
+            "basis": "Baseline flags, epoch IDs, event separation, exact source records, and executable novelty/continuity checks are durable and inspectable, as recorded in Pass 1."
+          },
+          "survivability": {
+            "status": "N/A",
+            "basis": "The frozen review states that this is an epistemic rule; evidence durability is assessed under observability and reproducibility rather than as a separate operational capability."
+          },
+          "reproducibility": {
+            "status": "PASS",
+            "evidence_records": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH", "OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE"],
+            "basis": "Pass 1 records exact primary evidence references, no blocking evidence, and a clear rule-specific evidence boundary; the cited records resolve in the frozen register."
+          },
+          "profile_stability": {
+            "status": "PASS",
+            "evidence_records": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH", "OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE"],
+            "basis": "Pass 1 records the same observation-versus-novelty boundary as explicit in collector, research, migration, and baseline profiles."
+          }
+        },
+        "shared_ancestry_considerations": {
+          "excluded_from_independent_count": ["ARCH-CROSS-FLEET-PRECEDENTS", "ARCH-FLEET-LAWS", "MC-GIC-001-025 as a derived index only"],
+          "basis": "Common architecture, Fleet Laws, Motherclank projections, and duplicated corpus indexing are not multiplied into independent implementation evidence."
+        },
+        "durability_survivability": {
+          "applicable": false,
+          "basis": "The Pass 1 N/A determination is retained; durable artifacts still support the observability and reproducibility conclusions."
+        },
+        "remaining_caveats": [
+          "The complete Diagnostic ledger and Motherclank variable batches remain unavailable, but Pass 1 judged that boundary non-material for this rule.",
+          "MC-GIC-001-025 is retained as supporting success/index evidence only and is not an additional independent system.",
+          "This decision changes support grade only and does not change maturity or adopt the standard."
+        ],
+        "conclusion": "All applicable E4 dimensions pass under the unchanged Pass 1 contract and no material unresolved evidence boundary remains for this rule."
+      },
+      "evidence_ids": ["DIA-DB-002", "DIA-DB-008", "MC-INC-20260823-FPC-EPOCH", "OEM-V2-BASELINE-MIGRATION", "OEM-PHASE10-DELIVERY", "MC-INC-20260823-SW-RESTORE", "MC-GIC-001-025"],
+      "notes": "Ratified from the frozen recommendation. The historical E3 record remains immutable; the prepared delta is not merged into FLEET_SUPPORT_MATRIX_V0.1.json."
+    },
+    {
+      "ratification_id": "CVC-RAT-001-STD-002",
+      "rule_id": "STD-STD-002",
+      "historical_recommendation": {
+        "decision": "PROMOTE_E4",
+        "source": "standards/E4_REVIEW_PASS_1.jsonl#STD-STD-002",
+        "source_sha256": "4E421C766FDD79E37415BA8DDFD5D276A7DE6B3B3DB629EAA88AC49625A360D0"
+      },
+      "final_ratification": {
+        "previous_support_grade": "E3",
+        "recommended_support_grade": "E4",
+        "decision": "RATIFIED_E4",
+        "operator_review_required": true
+      },
+      "rule_text_hash": {
+        "algorithm": "SHA-256",
+        "canonicalization": "Exact rule text from BASELINE_V0.1, UTF-8, surrounding whitespace trimmed, no trailing newline.",
+        "sha256": "2DBC1F440471E5569EE53E7FF1B85BD92360CFECC74E60F89F564434CEBEAB7F"
+      },
+      "baseline_properties_preserved": {
+        "baseline_version": "BASELINE_V0.1",
+        "normative_level": "MUST",
+        "maturity": "PROVISIONAL",
+        "applicability": "CORE",
+        "rule_text_changed": false
+      },
+      "e4_recheck": {
+        "required_dimensions": [
+          "breadth",
+          "independence",
+          "failure_success_support",
+          "observability",
+          "survivability",
+          "reproducibility",
+          "profile_stability"
+        ],
+        "dimension_results": {
+          "breadth": {
+            "status": "PASS",
+            "evidence_records": ["OEM-LOCK-RECONCILIATION", "KTW-MIGRATION-CONTRACT", "MC-CAPABILITY-MATRIX", "ARCH-CROSS-FLEET-PRECEDENTS"],
+            "supporting_artifacts": ["standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md", "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md"],
+            "basis": "The same 38 rule IDs, grading vocabulary, and evidence schema traveled across materially different Watch and OEM audit patients, with additional implementation contrasts recorded by Pass 1."
+          },
+          "independence": {
+            "status": "PASS",
+            "independent_systems": ["Watch Clank", "OEM Radar", "Smartwatch Clank", "Feature Phone Clank", "Korean Tech Wire"],
+            "independent_implementation_count": 5,
+            "basis": "Watch and OEM are independent frozen audit patients; Smartwatch, Feature Phone, and KTW are additional contrasts. Derived architecture records are excluded from the count."
+          },
+          "failure_success_support": {
+            "status": "PASS",
+            "failure_evidence": ["ARCH-REPORT-EVIDENCE-BOUNDARY", "DIA-DB-010", "OEM-STD-SRC-004-GAP"],
+            "success_evidence": ["OEM-LOCK-RECONCILIATION", "KTW-MIGRATION-CONTRACT", "MC-CAPABILITY-MATRIX", "ARCH-CROSS-FLEET-PRECEDENTS"],
+            "basis": "The frozen review preserves implementation-specific conformance gaps and successful observable-contract behavior; architecture records remain supporting/derived evidence rather than independent participants."
+          },
+          "observability": {
+            "status": "PASS",
+            "evidence_records": ["OEM-LOCK-RECONCILIATION", "KTW-MIGRATION-CONTRACT", "DIA-DB-010", "OEM-STD-SRC-004-GAP"],
+            "basis": "The same IDs, grading vocabulary, and evidence schema audited materially different systems while implementation-specific contracts remained local, as recorded in Pass 1."
+          },
+          "survivability": {
+            "status": "N/A",
+            "basis": "The frozen review states that implementation neutrality is a governance/property-of-the-standard rule, not a persistence or operational-state contract."
+          },
+          "reproducibility": {
+            "status": "PASS",
+            "evidence_records": ["OEM-LOCK-RECONCILIATION", "KTW-MIGRATION-CONTRACT", "DIA-DB-010", "OEM-STD-SRC-004-GAP"],
+            "supporting_artifacts": ["standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md", "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md"],
+            "basis": "The two frozen patient audits preserve the unchanged rule IDs, grading vocabulary, and evidence schema; exact source records and audit artifacts are identified in the frozen review."
+          },
+          "profile_stability": {
+            "status": "PASS",
+            "supporting_artifacts": ["standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md", "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md"],
+            "basis": "The frozen patient audits demonstrate unchanged rule language across collector, research, delivery, and GUI differences, with profile limits explicit."
+          }
+        },
+        "shared_ancestry_considerations": {
+          "excluded_from_independent_count": ["ARCH-CROSS-FLEET-PRECEDENTS", "ARCH-FLEET-LAWS", "MC-GIC-001-025"],
+          "basis": "Derived architecture precedents, Fleet Laws, and corpus indexes are not counted as independent implementations."
+        },
+        "durability_survivability": {
+          "applicable": false,
+          "basis": "The Pass 1 N/A determination is retained because the rule concerns implementation neutrality; operational durability is not the subject of the invariant."
+        },
+        "remaining_caveats": [
+          "Raw Diagnostic and Motherclank host artifacts remain unavailable, but Pass 1 judged them non-material to the portability conclusion.",
+          "The conclusion is about observable contracts and behavior; it does not mandate any implementation technology.",
+          "This decision changes support grade only and does not change maturity or adopt the standard."
+        ],
+        "conclusion": "All applicable E4 dimensions pass under the unchanged Pass 1 contract and the cross-patient portability evidence has no material unresolved boundary for this rule."
+      },
+      "evidence_ids": ["OEM-LOCK-RECONCILIATION", "KTW-MIGRATION-CONTRACT", "MC-CAPABILITY-MATRIX", "ARCH-CROSS-FLEET-PRECEDENTS", "ARCH-REPORT-EVIDENCE-BOUNDARY", "DIA-DB-010", "OEM-STD-SRC-004-GAP"],
+      "supporting_artifacts": ["standards/EVIDENCE_PASS_1_WATCH_CLANK_AUDIT.md", "standards/EVIDENCE_PASS_2_OEM_RADAR_AUDIT.md"],
+      "notes": "Ratified from the frozen recommendation. The historical E3 record remains immutable; the prepared delta is not merged into FLEET_SUPPORT_MATRIX_V0.1.json."
+    }
+  ],
+  "support_matrix_update": {
+    "status": "PREPARED_APPEND_ONLY_DELTA",
+    "base_matrix": {
+      "path": "standards/FLEET_SUPPORT_MATRIX_V0.1.json",
+      "sha256": "AF53A7818B19D29CE3D3DC29A3619F21AB71080EC2130A164B3114AD1E7D5616",
+      "preserved": true
+    },
+    "baseline_version": "BASELINE_V0.1",
+    "applied_to_frozen_matrix": false,
+    "operations": [
+      {"rule_id": "STD-EPI-001", "field": "support_grade", "previous_value": "E3", "new_value": "E4"},
+      {"rule_id": "STD-STD-002", "field": "support_grade", "previous_value": "E3", "new_value": "E4"}
+    ],
+    "only_field_changed_in_overlay": "support_grade",
+    "preservation": ["rule_text", "normative_level", "maturity", "applicability", "evidence_origins", "historical_support_grades"],
+    "application_note": "This is an append-only overlay prepared for operator review. It is not a rewrite of the prior support matrix or any prior review."
+  },
+  "history_policy": {
+    "historical_recommendation_and_final_decision_are_distinct": true,
+    "prior_frozen_artifacts_rewritten": false,
+    "historical_verdicts_rewritten": false,
+    "future_baseline_revision_must_reference_this_record": true
+  }
+}
