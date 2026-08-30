@@ -14,11 +14,12 @@ from a report that the operator has not deliberately supplied.
 
 ## Operator workflow
 
-1. Diagnostic preserves the incident report and its provenance.
+1. Diagnostic preserves the incident or success report and its provenance.
 2. The operator reviews whether the report is appropriate CVC evidence.
-3. The operator runs `cvc ingest <artifact>`.
-4. The operator runs `cvc check-triggers <artifact>`.
-5. If the trigger result warrants it, the operator runs `cvc review --affected`.
+3. The operator creates an explicit package with `diagnostic-clank handoff create`.
+4. The operator reviews the package and, separately, runs `cvc ingest <artifact>`.
+5. The operator may run `cvc check-triggers <artifact>` and, if warranted,
+   `cvc review --affected`.
 
 No scheduler, daemon, webhook, or cross-repository push is implied by this
 contract. Existing historical verdicts, rule maturity, support grades, and
@@ -47,5 +48,7 @@ The minimum conceptual fields are:
 
 The artifact hash supports replay and prevents a later mutable report from being
 mistaken for the historical input. A handoff package never grants permission to
-ingest itself; operator approval is a separate action.
-
+ingest itself; operator approval is a separate action. Positive evidence follows
+the same path: a successful restore, migration, restart-survivability replay,
+independent implementation, bounded replay, or durable-delivery result may be
+packaged with an explicit success verdict. CVC is not incident-only.

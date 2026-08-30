@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -36,6 +37,7 @@ def parser() -> argparse.ArgumentParser:
     triggers.add_argument("--rule")
     triggers.add_argument("--status")
     sub.add_parser("verify", help="verify migration hashes and frozen corpus structure")
+    sub.add_parser("observer", help="show the bounded read-only Motherclank observer snapshot")
     ingest_cmd = sub.add_parser("ingest", help="preserve and classify one explicit input artifact")
     ingest_cmd.add_argument("input", type=Path)
     query_cmd = sub.add_parser("query", help="return a bounded provenance packet")
@@ -49,6 +51,12 @@ def parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except (ValueError, OSError):
+                pass
     args = parser().parse_args(argv)
     service = CVCService(args.root)
     workspace = service.workspace
@@ -70,6 +78,8 @@ def main(argv: list[str] | None = None) -> int:
             result = service.verify_corpus()
             _json(result.as_dict())
             return 0 if result.passed else 1
+        elif args.command == "observer":
+            _json(service.get_observer_snapshot())
         elif args.command == "ingest":
             _json(service.ingest_artifact(args.input))
         elif args.command == "query":
