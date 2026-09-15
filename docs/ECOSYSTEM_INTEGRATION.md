@@ -73,17 +73,17 @@ and grants no participant or enforcement authority.
 
 `RATIFIED_E4`, `SUPPORTED_E3`, `OPEN_TRIGGER`, `BLOCKED_EVIDENCE`, and
 `HISTORICAL_EVIDENCE` remain CVC evidence classifications. Motherclank may
-summarize them, but cannot turn them into fleet mandates. A future Standards
-Clank could consume CVC evidence to define normative contracts; Standards
-Clank remains unstarted. The planned editorial CVC Workbench is also separate
+summarize them, but cannot turn them into fleet mandates. Standards Clank
+exists, owns fleet conformance authority, and may consume CVC evidence when
+defining normative contracts. The planned editorial CVC Workbench is separate
 and is not a fleet member.
 
 ## Standards boundary
 
-CVC determines what the evidence supports. A future Standards Clank may consume
-CVC's evidence corpus and ratified support state. CVC itself is not Standards
-Clank and does not enforce fleet compliance. Standards Clank remains **NOT
-STARTED**.
+CVC determines what the evidence supports. Standards Clank owns fleet
+conformance authority and may consume CVC's evidence corpus and ratified support
+state. CVC itself is not Standards Clank, does not enforce fleet compliance,
+and does not create normative fleet rules by itself.
 
 ## Workbench boundary
 

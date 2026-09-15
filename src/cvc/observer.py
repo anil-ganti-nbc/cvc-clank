@@ -10,12 +10,17 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from .logic import status
 from .store import Workspace, now_iso
 
 OBSERVER_SCHEMA_VERSION = "cvc-observer.v0.1"
 _OPEN_STATUSES = {"SATISFIED", "CLOSED"}
 _UNRESOLVED_OUTCOMES = {"INSUFFICIENT_TO_CLASSIFY", "UNMAPPED_REVIEW_REQUIRED"}
+_RUNTIME_STATE_PATHS = (
+    "state/ingest/ingestions.jsonl",
+    "state/reviews/trigger_checks.jsonl",
+    "state/reviews/reviews.jsonl",
+)
+_STATE_ERROR_MAX_CHARS = 240
 
 
 def _activity(rows: list[dict[str, Any]], id_keys: tuple[str, ...]) -> dict[str, Any] | None:
@@ -28,18 +33,20 @@ def _activity(rows: list[dict[str, Any]], id_keys: tuple[str, ...]) -> dict[str,
     }
 
 
-def _state_readability(workspace: Workspace) -> tuple[bool, list[str]]:
+def _runtime_state(workspace: Workspace) -> tuple[dict[str, list[dict[str, Any]]], bool, list[str]]:
+    rows: dict[str, list[dict[str, Any]]] = {}
     errors: list[str] = []
-    for relative in (
-        "state/ingest/ingestions.jsonl",
-        "state/reviews/trigger_checks.jsonl",
-        "state/reviews/reviews.jsonl",
-    ):
+    for relative in _RUNTIME_STATE_PATHS:
         try:
-            workspace.state_jsonl(relative)
+            rows[relative] = workspace.state_jsonl(relative)
         except Exception as exc:  # noqa: BLE001 - surfaced as observer evidence
-            errors.append(f"{relative}: {type(exc).__name__}: {exc}")
-    return not errors, errors
+            rows[relative] = []
+            detail = " ".join(str(exc).split())
+            message = f"{relative}: {type(exc).__name__}: {detail}"
+            if len(message) > _STATE_ERROR_MAX_CHARS:
+                message = message[: _STATE_ERROR_MAX_CHARS - 3] + "..."
+            errors.append(message)
+    return rows, not errors, errors
 
 
 def _trigger_view(trigger: dict[str, Any]) -> dict[str, Any]:
@@ -67,10 +74,9 @@ def observer_snapshot(root: Path | str) -> dict[str, Any]:
     board = workspace.board()
     matrix = workspace.matrix()
     triggers = workspace.triggers()
-    cvc_status = status(workspace)
-    state_readable, state_errors = _state_readability(workspace)
-    ingestions = workspace.state_jsonl("state/ingest/ingestions.jsonl")
-    reviews = workspace.state_jsonl("state/reviews/reviews.jsonl")
+    runtime_state, state_readable, state_errors = _runtime_state(workspace)
+    ingestions = runtime_state["state/ingest/ingestions.jsonl"]
+    reviews = runtime_state["state/reviews/reviews.jsonl"]
     open_triggers = [row for row in triggers if row.get("current_status") not in _OPEN_STATUSES]
     unresolved = [
         row for row in ingestions
@@ -79,7 +85,14 @@ def observer_snapshot(root: Path | str) -> dict[str, Any]:
     failures = corpus.get("failures", [])
     hash_mismatch_count = sum("hash mismatch" in str(item).lower() for item in failures)
 
-    distribution = cvc_status.get("support_distribution", {})
+    rules = matrix.get("rules", [])
+    distribution = {
+        grade: sum(row.get("recalculated_support") == grade for row in rules)
+        for grade in ("E0", "E1", "E2", "E3", "E4")
+    }
+    ratified_e4 = sorted(
+        row.get("rule_id") for row in rules if row.get("recalculated_support") == "E4"
+    )
     return {
         "schema_version": OBSERVER_SCHEMA_VERSION,
         "observed_at_utc": observed_at,
@@ -101,19 +114,19 @@ def observer_snapshot(root: Path | str) -> dict[str, Any]:
             "failure_count": len(failures),
         },
         "board": {
-            "total_rules": cvc_status.get("rule_count", len(matrix.get("rules", []))),
+            "total_rules": len(rules),
             "support_distribution": {grade: distribution.get(grade, 0) for grade in ("E0", "E1", "E2", "E3", "E4")},
-            "ratified_e4_count": len(cvc_status.get("ratified_e4_rules", [])),
-            "ratified_e4_ids": cvc_status.get("ratified_e4_rules", []),
-            "matrix_version": cvc_status.get("matrix_version"),
-            "board_status": cvc_status.get("board_status"),
+            "ratified_e4_count": len(ratified_e4),
+            "ratified_e4_ids": ratified_e4,
+            "matrix_version": matrix.get("matrix_version"),
+            "board_status": board.get("status"),
         },
         "activity": {
             "latest_ingestion": _activity(ingestions, ("ingestion_id",)),
             "latest_review": _activity(reviews, ("review_id",)),
             "pending_reviews": len(unresolved),
             "unresolved_ingestion_count": len(unresolved),
-            "reasoning_provider": cvc_status.get("reasoning_provider", "disabled"),
+            "reasoning_provider": "disabled" if not workspace.config.reasoning_enabled else "configured-but-not-implemented",
         },
         "triggers": {
             "open_count": len(open_triggers),
@@ -123,8 +136,8 @@ def observer_snapshot(root: Path | str) -> dict[str, Any]:
         "summary": {
             "status": "OPERATIONAL" if integrity.passed and state_readable else "DEGRADED",
             "integrity": "PASS" if integrity.passed else "FAIL",
-            "rules": cvc_status.get("rule_count", 0),
-            "ratified_e4": len(cvc_status.get("ratified_e4_rules", [])),
+            "rules": len(rules),
+            "ratified_e4": len(ratified_e4),
             "open_triggers": len(open_triggers),
             "pending_reviews": len(unresolved),
         },

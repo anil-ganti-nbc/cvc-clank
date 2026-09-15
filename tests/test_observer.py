@@ -69,3 +69,25 @@ def test_observer_propagates_frozen_hash_failure(tmp_path: Path) -> None:
     assert snapshot["health"]["corpus_integrity"] == "FAIL"
     assert snapshot["health"]["hash_mismatch_count"] >= 1
     assert snapshot["summary"]["status"] == "DEGRADED"
+
+
+def test_observer_fails_soft_without_mutating_corrupt_runtime_state(tmp_path: Path) -> None:
+    copy_root = tmp_path / "cvc"
+    shutil.copytree(
+        ROOT,
+        copy_root,
+        ignore=shutil.ignore_patterns(".git", "__pycache__", ".pytest_cache"),
+    )
+    target = copy_root / "state" / "ingest" / "ingestions.jsonl"
+    target.write_text('{"ingestion_id": "truncated"', encoding="utf-8")
+    before = _state_hashes(copy_root)
+
+    snapshot = observer_snapshot(copy_root)
+
+    assert snapshot["summary"]["status"] == "DEGRADED"
+    assert snapshot["health"]["runtime_state_readable"] is False
+    assert snapshot["health"]["state_read_errors"]
+    assert "state/ingest/ingestions.jsonl" in snapshot["health"]["state_read_errors"][0]
+    assert len(snapshot["health"]["state_read_errors"][0]) <= 240
+    assert snapshot["activity"]["latest_ingestion"] is None
+    assert _state_hashes(copy_root) == before

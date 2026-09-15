@@ -23,8 +23,10 @@ CVC is operational, operator-triggered, and unscheduled:
 
 CVC is **not** a collector, scheduler, remediation engine, Diagnostic Clank,
 Standards Clank, or the daily Context/Verification/Coverage journalism
-workbench. In particular, the planned CVC Workbench for post-selection editorial
-research is a separate future tool and is not implemented here.
+workbench. Standards Clank exists and owns fleet conformance authority. CVC
+supplies evidence to that authority but does not create normative fleet rules
+by itself. The planned CVC Workbench for post-selection editorial research is a
+separate future tool and is not implemented here.
 
 The normal learning loop is:
 
@@ -46,8 +48,8 @@ CVC is closed as archaeology and governance preparation with the terminal state
 `CVC_MISSION_COMPLETE_WITH_OPEN_EVIDENCE_BLOCKERS`. This repository consumes the
 closeout corpus; it does not reopen archaeology, gather evidence, remediate a
 Clank, change rule text/maturity/support grades, ingest new evidence during
-publication, create another ratification decision, start Standards Clank, or
-schedule background work.
+publication, create another ratification decision, assume Standards Clank's
+authority, or schedule background work.
 
 The 42 migrated artifacts under `corpus/` are frozen historical input. Their
 source and destination hashes are recorded in
@@ -138,7 +140,8 @@ docs/     ecosystem identity and Diagnostic handoff contract
 ```
 
 There is deliberately no daemon, scheduler, periodic scraper, Discord sender,
-automatic ratifier, aggregate score, or M1/Standards Clank implementation here.
+automatic ratifier, aggregate score, or Standards Clank implementation here.
+Standards Clank is a separate, existing fleet authority.
 
 ## Native desktop GUI
 
