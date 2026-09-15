@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from .logic import board_rows, check_triggers, ingest, preview_ingest, query, review, rule_detail, status
+from .observer import observer_snapshot
 from .store import CorpusIntegrityResult, Workspace, load_json, now_iso
 
 
@@ -21,6 +22,10 @@ class CVCService:
 
     def get_status(self) -> dict[str, Any]:
         return status(self.workspace)
+
+    def get_observer_snapshot(self) -> dict[str, Any]:
+        """Return the bounded read-only fleet observer view."""
+        return observer_snapshot(self.workspace.root)
 
     def get_board(self, **filters: Any) -> list[dict[str, Any]]:
         return board_rows(self.workspace, **filters)
